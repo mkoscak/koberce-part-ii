@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridDBres = new System.Windows.Forms.DataGridView();
+            this.gridDBres = new DoubleBufferedGrid();
             this.txtNonQueryRes = new System.Windows.Forms.TextBox();
             this.txtQuery = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
