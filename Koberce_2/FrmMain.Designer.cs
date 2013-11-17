@@ -32,9 +32,11 @@
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
-            this.tabMain.SuspendLayout();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolbarMain
@@ -43,9 +45,11 @@
             this.toolbarMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolbarMain.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnToolExit});
+            this.btnToolExit,
+            this.toolDbHelper});
             this.toolbarMain.Location = new System.Drawing.Point(0, 0);
             this.toolbarMain.Name = "toolbarMain";
+            this.toolbarMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolbarMain.Size = new System.Drawing.Size(1138, 55);
             this.toolbarMain.TabIndex = 0;
             this.toolbarMain.Text = "Toolbar";
@@ -66,29 +70,46 @@
             this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabMain.Controls.Add(this.tabPage1);
-            this.tabMain.Location = new System.Drawing.Point(12, 58);
+            this.tabMain.Location = new System.Drawing.Point(3, 58);
             this.tabMain.Multiline = true;
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1114, 620);
+            this.tabMain.Size = new System.Drawing.Size(1135, 607);
             this.tabMain.TabIndex = 1;
             // 
-            // tabPage1
+            // statusBar
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1106, 594);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel1});
+            this.statusBar.Location = new System.Drawing.Point(0, 668);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(1138, 22);
+            this.statusBar.TabIndex = 2;
+            this.statusBar.Text = "Status bar";
+            // 
+            // statusLabel1
+            // 
+            this.statusLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.statusLabel1.Name = "statusLabel1";
+            this.statusLabel1.Size = new System.Drawing.Size(77, 17);
+            this.statusLabel1.Text = "Form loaded!";
+            // 
+            // toolDbHelper
+            // 
+            this.toolDbHelper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolDbHelper.Image = ((System.Drawing.Image)(resources.GetObject("toolDbHelper.Image")));
+            this.toolDbHelper.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolDbHelper.Name = "toolDbHelper";
+            this.toolDbHelper.Size = new System.Drawing.Size(52, 52);
+            this.toolDbHelper.Text = "Database helper";
+            this.toolDbHelper.Click += new System.EventHandler(this.toolDbHelper_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 690);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.toolbarMain);
             this.DoubleBuffered = true;
@@ -100,7 +121,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
-            this.tabMain.ResumeLayout(false);
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +133,9 @@
         private System.Windows.Forms.ToolStrip toolbarMain;
         private System.Windows.Forms.ToolStripButton btnToolExit;
         private System.Windows.Forms.TabControl tabMain;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel1;
+        private System.Windows.Forms.ToolStripButton toolDbHelper;
     }
 }
 
