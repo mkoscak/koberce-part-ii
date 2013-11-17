@@ -58,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBProvider.cs" />
+    <Compile Include="DoubleBufferedGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
