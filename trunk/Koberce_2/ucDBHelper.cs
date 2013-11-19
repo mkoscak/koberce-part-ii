@@ -17,8 +17,6 @@ namespace Koberce_2
         {
             InitializeComponent();
 
-            this.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
-
             this.db = db;
         }
 

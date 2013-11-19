@@ -28,27 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridDBres = new DoubleBufferedGrid();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDBHelper));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNonQueryRes = new System.Windows.Forms.TextBox();
             this.txtQuery = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExecNonQuery = new System.Windows.Forms.Button();
             this.btnExecQuery = new System.Windows.Forms.Button();
+            this.gridDBres = new Koberce_2.DoubleBufferedGrid();
             ((System.ComponentModel.ISupportInitialize)(this.gridDBres)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gridDBres
-            // 
-            this.gridDBres.AllowUserToAddRows = false;
-            this.gridDBres.AllowUserToDeleteRows = false;
-            this.gridDBres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridDBres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDBres.Location = new System.Drawing.Point(3, 291);
-            this.gridDBres.Name = "gridDBres";
-            this.gridDBres.Size = new System.Drawing.Size(930, 290);
-            this.gridDBres.TabIndex = 1;
             // 
             // txtNonQueryRes
             // 
@@ -72,7 +61,7 @@
             this.txtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtQuery.Size = new System.Drawing.Size(373, 282);
             this.txtQuery.TabIndex = 4;
-            this.txtQuery.Text = "select * from sqlite_master\r\n\r\n";
+            this.txtQuery.Text = resources.GetString("txtQuery.Text");
             this.txtQuery.WordWrap = false;
             // 
             // btnClear
@@ -105,11 +94,26 @@
             this.btnExecQuery.UseVisualStyleBackColor = true;
             this.btnExecQuery.Click += new System.EventHandler(this.btnExecQuery_Click);
             // 
+            // gridDBres
+            // 
+            this.gridDBres.AllowUserToAddRows = false;
+            this.gridDBres.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            this.gridDBres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridDBres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridDBres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDBres.Location = new System.Drawing.Point(3, 291);
+            this.gridDBres.Name = "gridDBres";
+            this.gridDBres.Size = new System.Drawing.Size(930, 290);
+            this.gridDBres.TabIndex = 1;
+            // 
             // ucDBHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExecNonQuery);
             this.Controls.Add(this.btnExecQuery);
@@ -127,11 +131,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridDBres;
         private System.Windows.Forms.TextBox txtNonQueryRes;
         private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExecNonQuery;
         private System.Windows.Forms.Button btnExecQuery;
+        private DoubleBufferedGrid gridDBres;
     }
 }
