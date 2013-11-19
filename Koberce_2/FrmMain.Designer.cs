@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
+            this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             this.toolbarMain.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnToolExit,
+            this.toolNrSeries,
             this.toolDbHelper});
             this.toolbarMain.Location = new System.Drawing.Point(0, 0);
             this.toolbarMain.Name = "toolbarMain";
@@ -64,6 +66,16 @@
             this.btnToolExit.Size = new System.Drawing.Size(52, 52);
             this.btnToolExit.Text = "Exit application";
             this.btnToolExit.Click += new System.EventHandler(this.btnToolExit_Click);
+            // 
+            // toolDbHelper
+            // 
+            this.toolDbHelper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolDbHelper.Image = ((System.Drawing.Image)(resources.GetObject("toolDbHelper.Image")));
+            this.toolDbHelper.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolDbHelper.Name = "toolDbHelper";
+            this.toolDbHelper.Size = new System.Drawing.Size(52, 52);
+            this.toolDbHelper.Text = "Database helper";
+            this.toolDbHelper.Click += new System.EventHandler(this.toolDbHelper_Click);
             // 
             // tabMain
             // 
@@ -94,15 +106,15 @@
             this.statusLabel1.Size = new System.Drawing.Size(77, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
-            // toolDbHelper
+            // toolNrSeries
             // 
-            this.toolDbHelper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolDbHelper.Image = ((System.Drawing.Image)(resources.GetObject("toolDbHelper.Image")));
-            this.toolDbHelper.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolDbHelper.Name = "toolDbHelper";
-            this.toolDbHelper.Size = new System.Drawing.Size(52, 52);
-            this.toolDbHelper.Text = "Database helper";
-            this.toolDbHelper.Click += new System.EventHandler(this.toolDbHelper_Click);
+            this.toolNrSeries.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolNrSeries.Image = ((System.Drawing.Image)(resources.GetObject("toolNrSeries.Image")));
+            this.toolNrSeries.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNrSeries.Name = "toolNrSeries";
+            this.toolNrSeries.Size = new System.Drawing.Size(52, 52);
+            this.toolNrSeries.Text = "Number series";
+            this.toolNrSeries.Click += new System.EventHandler(this.toolNrSeries_Click);
             // 
             // FrmMain
             // 
@@ -117,7 +129,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.1";
+            this.Text = "Global - part II - v0.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
@@ -136,6 +148,7 @@
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel1;
         private System.Windows.Forms.ToolStripButton toolDbHelper;
+        private System.Windows.Forms.ToolStripButton toolNrSeries;
     }
 }
 

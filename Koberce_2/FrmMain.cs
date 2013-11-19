@@ -20,12 +20,18 @@ namespace Koberce_2
             model = new Model(this);
 
             tabMain.TabPages.Clear();
+            TabAddDbHelper("Number series", new ucNumberSeries(model.dbProvider));
             TabAddDbHelper("Database helper", new ucDBHelper(model.dbProvider));
         }
 
         private void toolDbHelper_Click(object sender, EventArgs e)
         {
             ShowForm((sender as ToolStripItem).Text, new ucDBHelper(model.dbProvider));
+        }
+
+        private void toolNrSeries_Click(object sender, EventArgs e)
+        {
+            ShowForm((sender as ToolStripItem).Text, new ucNumberSeries(model.dbProvider));
         }
 
         /// <summary>
@@ -38,6 +44,7 @@ namespace Koberce_2
             tabMain.TabPages.Add(newTab);
             newTab.Controls.Add(uc);
             uc.Size = uc.Parent.ClientSize;
+            uc.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
         }
 
         /// <summary>
@@ -53,6 +60,7 @@ namespace Koberce_2
             frm.Icon = this.Icon;
             frm.Size = uc.Size;
             uc.Size = uc.Parent.ClientSize;
+            uc.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             frm.Show(this);
         }
 
