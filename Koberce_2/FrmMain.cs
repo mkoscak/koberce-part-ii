@@ -20,6 +20,7 @@ namespace Koberce_2
             model = new Model(this);
 
             tabMain.TabPages.Clear();
+            TabAddDbHelper("Suppliers", new ucSuppliers());
             TabAddDbHelper("Number series", new ucNumberSeries());
             TabAddDbHelper("Database helper", new ucDBHelper());
         }
@@ -32,6 +33,11 @@ namespace Koberce_2
         private void toolNrSeries_Click(object sender, EventArgs e)
         {
             ShowForm((sender as ToolStripItem).Text, new ucNumberSeries());
+        }
+
+        private void toolSuppliers_Click(object sender, EventArgs e)
+        {
+            ShowForm((sender as ToolStripItem).Text, new ucSuppliers());
         }
 
         /// <summary>

@@ -57,12 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common.cs" />
     <Compile Include="DBProvider.cs" />
     <Compile Include="DoubleBufferedGrid.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\NumberSerieEntity.cs" />
+    <Compile Include="Entities\SupplierEntity.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +89,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucNumberSeries.resx">
       <DependentUpon>ucNumberSeries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSuppliers.resx">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -114,6 +120,12 @@
     </Compile>
     <Compile Include="ucNumberSeries.Designer.cs">
       <DependentUpon>ucNumberSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSuppliers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSuppliers.Designer.cs">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
