@@ -26,15 +26,9 @@ namespace Koberce_2
 
         private void ReloadAllData()
         {
-            listSeries.Items.Clear();
-
+            gridSeries.DataSource = null;
             var data = NumberSerieEntity.LoadAll();
-            foreach (var item in data)
-            {
-                var toAdd = new ListViewItem(item.Name);
-                toAdd.Tag = item;
-                listSeries.Items.Add(toAdd);
-            }
+            gridSeries.DataSource = data;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -112,12 +106,12 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void listSeries_SelectedIndexChanged(object sender, EventArgs e)
+        private void gridSeries_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (listSeries.SelectedItems == null || listSeries.SelectedItems.Count == 0)
+            if (gridSeries.SelectedCells == null || gridSeries.SelectedCells.Count == 0)
                 current = NumberSerieEntity.Empty;
             else
-                current = listSeries.SelectedItems[0].Tag as NumberSerieEntity;
+                current = gridSeries.Rows[e.RowIndex].DataBoundItem as NumberSerieEntity;
 
             ShowItem(current);
         }

@@ -12,7 +12,7 @@ namespace Koberce_2.Entities
     abstract class BaseEntity<T>
         where T : new()
     {
-        public string TableName
+        internal string TableName
         {
             get;
             private set;
@@ -21,7 +21,8 @@ namespace Koberce_2.Entities
         // column variables for mapping
         public long? Id { get; set; }
         public string Comment { get; set; }
-        public bool Valid { get; set; }
+        // internal because of invisibility in grids
+        internal bool Valid { get; set; }
 
         // basic column names
         public static string ID = "ID";

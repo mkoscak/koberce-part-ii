@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
+            this.toolCustomers = new System.Windows.Forms.ToolStripButton();
             this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
             this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
@@ -47,6 +49,8 @@
             this.toolbarMain.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnToolExit,
+            this.toolSuppliers,
+            this.toolCustomers,
             this.toolNrSeries,
             this.toolDbHelper});
             this.toolbarMain.Location = new System.Drawing.Point(0, 0);
@@ -66,6 +70,25 @@
             this.btnToolExit.Size = new System.Drawing.Size(52, 52);
             this.btnToolExit.Text = "Exit application";
             this.btnToolExit.Click += new System.EventHandler(this.btnToolExit_Click);
+            // 
+            // toolSuppliers
+            // 
+            this.toolSuppliers.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolSuppliers.Image = ((System.Drawing.Image)(resources.GetObject("toolSuppliers.Image")));
+            this.toolSuppliers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSuppliers.Name = "toolSuppliers";
+            this.toolSuppliers.Size = new System.Drawing.Size(52, 52);
+            this.toolSuppliers.Text = "Suppliers";
+            this.toolSuppliers.Click += new System.EventHandler(this.toolSuppliers_Click);
+            // 
+            // toolCustomers
+            // 
+            this.toolCustomers.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolCustomers.Image = ((System.Drawing.Image)(resources.GetObject("toolCustomers.Image")));
+            this.toolCustomers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolCustomers.Name = "toolCustomers";
+            this.toolCustomers.Size = new System.Drawing.Size(52, 52);
+            this.toolCustomers.Text = "Customers";
             // 
             // toolNrSeries
             // 
@@ -129,7 +152,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.2";
+            this.Text = "Global - part II - v0.3.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
@@ -149,6 +172,8 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLabel1;
         private System.Windows.Forms.ToolStripButton toolDbHelper;
         private System.Windows.Forms.ToolStripButton toolNrSeries;
+        private System.Windows.Forms.ToolStripButton toolSuppliers;
+        private System.Windows.Forms.ToolStripButton toolCustomers;
     }
 }
 
