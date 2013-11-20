@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
             this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,16 @@
             this.btnToolExit.Size = new System.Drawing.Size(52, 52);
             this.btnToolExit.Text = "Exit application";
             this.btnToolExit.Click += new System.EventHandler(this.btnToolExit_Click);
+            // 
+            // toolNrSeries
+            // 
+            this.toolNrSeries.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolNrSeries.Image = ((System.Drawing.Image)(resources.GetObject("toolNrSeries.Image")));
+            this.toolNrSeries.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNrSeries.Name = "toolNrSeries";
+            this.toolNrSeries.Size = new System.Drawing.Size(52, 52);
+            this.toolNrSeries.Text = "Number series";
+            this.toolNrSeries.Click += new System.EventHandler(this.toolNrSeries_Click);
             // 
             // toolDbHelper
             // 
@@ -106,16 +116,6 @@
             this.statusLabel1.Size = new System.Drawing.Size(77, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
-            // toolNrSeries
-            // 
-            this.toolNrSeries.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolNrSeries.Image = ((System.Drawing.Image)(resources.GetObject("toolNrSeries.Image")));
-            this.toolNrSeries.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolNrSeries.Name = "toolNrSeries";
-            this.toolNrSeries.Size = new System.Drawing.Size(52, 52);
-            this.toolNrSeries.Text = "Number series";
-            this.toolNrSeries.Click += new System.EventHandler(this.toolNrSeries_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,7 +129,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3";
+            this.Text = "Global - part II - v0.3.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();

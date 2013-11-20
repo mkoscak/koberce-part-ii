@@ -12,16 +12,13 @@ namespace Koberce_2
 {
     public partial class ucNumberSeries : UserControl
     {
-        DBProvider dbProvider;
         NumberSerieEntity current;
 
-        public ucNumberSeries(DBProvider db)
+        public ucNumberSeries()
         {
             InitializeComponent();
 
             new ToolTip().SetToolTip(btnReload, "Reload");
-
-            dbProvider = db;
 
             ReloadAllData();
             NewItem();
@@ -31,7 +28,7 @@ namespace Koberce_2
         {
             listSeries.Items.Clear();
 
-            var data = NumberSerieEntity.LoadAll(dbProvider);
+            var data = NumberSerieEntity.LoadAll();
             foreach (var item in data)
             {
                 var toAdd = new ListViewItem(item.Name);
@@ -87,7 +84,7 @@ namespace Koberce_2
         private void SaveCurrent()
         {
             LoadCurrent();
-            current.Save(dbProvider);
+            current.Save();
 
             MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ReloadAllData();
@@ -109,7 +106,7 @@ namespace Koberce_2
         private void DeleteCurrent()
         {
             LoadCurrent();
-            current.Delete(dbProvider);
+            current.Delete();
 
             MessageBox.Show(this, "Delete successful!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ReloadAllData();

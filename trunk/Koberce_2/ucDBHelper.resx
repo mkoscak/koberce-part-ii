@@ -130,7 +130,7 @@ select * from T_NUMBER_SERIE
 
 select * from T_SUPPLIER
 
-select * from T_PURCHASER
+select * from T_CUSTOMER
 
 select * from T_INVOICE
 

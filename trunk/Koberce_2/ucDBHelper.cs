@@ -11,13 +11,9 @@ namespace Koberce_2
 {
     public partial class ucDBHelper : UserControl
     {
-        DBProvider db;
-
-        public ucDBHelper(DBProvider db)
+        public ucDBHelper()
         {
             InitializeComponent();
-
-            this.db = db;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -31,7 +27,7 @@ namespace Koberce_2
             var q = txtQuery.SelectedText;
             try
             {
-                var ds = db.ExecuteQuery(q);
+                var ds = DBProvider.Instance.ExecuteQuery(q);
                 if (ds != null && ds.Tables.Count > 0)
                     gridDBres.DataSource = ds.Tables[0];
             }
@@ -46,7 +42,7 @@ namespace Koberce_2
             var q = txtQuery.SelectedText;
             try
             {
-                db.ExecuteNonQuery(q);
+                DBProvider.Instance.ExecuteNonQuery(q);
                 txtNonQueryRes.AppendText(Environment.NewLine + "Exec successful!");
             }
             catch (Exception ex)
