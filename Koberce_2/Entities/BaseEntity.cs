@@ -9,7 +9,8 @@ namespace Koberce_2.Entities
     /// <summary>
     /// Base DB entity with basic columns
     /// </summary>
-    abstract class BaseEntity
+    abstract class BaseEntity<T>
+        where T : new()
     {
         public string TableName
         {
@@ -45,6 +46,17 @@ namespace Koberce_2.Entities
             Id = null;
             Comment = string.Empty;
             Valid = true;
+        }
+
+        /// <summary>
+        /// Creates empty entity
+        /// </summary>
+        public static T Empty
+        {
+            get
+            {
+                return new T();
+            }
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Koberce_2.Entities
 {
-    class NumberSerieEntity : BaseEntity
+    class NumberSerieEntity : BaseEntity<NumberSerieEntity>
     {
         public string Name { get; set; }
         public string Prefix { get; set; }
@@ -48,14 +48,6 @@ namespace Koberce_2.Entities
             }
 
             return ret;
-        }
-
-        public static NumberSerieEntity Empty
-        {
-            get
-            {
-                return new NumberSerieEntity();
-            }
         }
 
         public void Load(long id)
