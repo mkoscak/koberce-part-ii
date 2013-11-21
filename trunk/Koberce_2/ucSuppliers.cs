@@ -21,7 +21,13 @@ namespace Koberce_2
             new ToolTip().SetToolTip(btnReload, "Reload");
 
             NewItem();
-            ReloadAllData();
+            try
+            {
+                ReloadAllData();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void ReloadAllData()
