@@ -75,7 +75,7 @@ namespace Koberce_2
             current.Address2 = txtAddress2.Text;
             current.Phone = txtPhone.Text;
             current.Email = txtEmail.Text;
-            var ns = cbCustomerTypes.SelectedItem as CustomerEntity.CCustomerType;
+            var ns = cbCustomerTypes.SelectedItem as CodeList;
             if (ns != null)
                 current.DCustomerType = ns.id;
             else
