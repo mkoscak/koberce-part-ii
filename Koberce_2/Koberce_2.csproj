@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeList.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="DBProvider.cs" />
     <Compile Include="DoubleBufferedGrid.cs">

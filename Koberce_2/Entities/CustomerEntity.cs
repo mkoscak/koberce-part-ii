@@ -7,27 +7,7 @@ namespace Koberce_2.Entities
 {
     class CustomerEntity : BaseEntity<CustomerEntity>
     {
-        /// <summary>
-        /// Help class as codelist
-        /// </summary>
-        public class CCustomerType
-        {
-            public long id;
-            public string name;
-            
-            public CCustomerType(long id, string name)
-            {
-                this.id = id;
-                this.name = name;
-            }
-
-            public override string ToString()
-            {
-                return name;
-            }
-        }
-
-        public static CCustomerType[] CustomerTypes = { new CCustomerType(0, "Whole saler"), new CCustomerType(1, "Small customer") };
+        public static CodeList[] CustomerTypes = { new CodeList(0, "Whole saler"), new CodeList(1, "Small customer") };
 
         public string Name { get; set; }
         public string Address { get; set; }
