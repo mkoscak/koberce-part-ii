@@ -63,6 +63,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\NumberSerieEntity.cs" />
     <Compile Include="Entities\SupplierEntity.cs" />
     <Compile Include="FrmMain.cs">
@@ -81,6 +82,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucCustomers.resx">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ucDBHelper.resx">
@@ -108,6 +113,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ucCustomers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucCustomers.designer.cs">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="ucDBHelper.cs">
       <SubType>UserControl</SubType>

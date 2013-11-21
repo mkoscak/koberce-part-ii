@@ -21,6 +21,7 @@ namespace Koberce_2
 
             tabMain.TabPages.Clear();
             TabAddDbHelper("Suppliers", new ucSuppliers());
+            TabAddDbHelper("Customers", new ucCustomers());
             TabAddDbHelper("Number series", new ucNumberSeries());
             TabAddDbHelper("Database helper", new ucDBHelper());
         }
@@ -38,6 +39,11 @@ namespace Koberce_2
         private void toolSuppliers_Click(object sender, EventArgs e)
         {
             ShowForm((sender as ToolStripItem).Text, new ucSuppliers());
+        }
+
+        private void toolCustomers_Click(object sender, EventArgs e)
+        {
+            ShowForm((sender as ToolStripItem).Text, new ucCustomers());
         }
 
         /// <summary>

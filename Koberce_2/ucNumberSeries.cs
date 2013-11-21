@@ -20,7 +20,6 @@ namespace Koberce_2
 
             new ToolTip().SetToolTip(btnReload, "Reload");
 
-            NewItem();
             //nacitanie moze zlyhat ak DB neexistuje alebo nie je aktualne oscriptovana.. vtedy je potrebne pouzit DBHelper a spustit aktualny script
             try
             {
@@ -29,6 +28,7 @@ namespace Koberce_2
             catch (Exception)
             {
             }
+            NewItem();
         }
 
         private void ReloadAllData()
