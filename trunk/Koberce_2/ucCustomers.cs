@@ -10,11 +10,12 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucSuppliers : UserControl
+    public partial class ucCustomers : UserControl
     {
-        SupplierEntity current;
 
-        public ucSuppliers()
+        CustomerEntity current;
+
+        public ucCustomers()
         {
             InitializeComponent();
 
@@ -33,25 +34,25 @@ namespace Koberce_2
         private void ReloadAllData()
         {
             gridSuppliers.DataSource = null;
-            var data = SupplierEntity.LoadAll();
+            var data = CustomerEntity.LoadAll();
             gridSuppliers.DataSource = data;
 
-            ReloadNumSeries();
+            ReloadCustomerTypes();
         }
 
-        private void ReloadNumSeries()
+        private void ReloadCustomerTypes()
         {
-            cbNumberSerie.DataSource = null;
-            cbNumberSerie.DataSource = NumberSerieEntity.LoadAll();
+            cbCustomerTypes.DataSource = null;
+            cbCustomerTypes.DataSource = CustomerEntity.CustomerTypes;
         }
 
         private void NewItem()
         {
-            current = SupplierEntity.Empty;
+            current = CustomerEntity.Empty;
             ShowItem(current);
         }
 
-        private void ShowItem(SupplierEntity ent)
+        private void ShowItem(CustomerEntity ent)
         {
             lblId.Text = ent.Id.HasValue ? ent.Id.Value.ToString() : string.Empty;
             txtName.Text = ent.Name;
@@ -59,7 +60,7 @@ namespace Koberce_2
             txtAddress2.Text = ent.Address2;
             txtPhone.Text = ent.Phone;
             txtEmail.Text = ent.Email;
-            cbNumberSerie.Text = ent.NrSerieId.ToString();
+            cbCustomerTypes.SelectedIndex = (int)(ent.DCustomerType ?? 0);
             txtComment.Text = ent.Comment;
         }
 
@@ -74,11 +75,11 @@ namespace Koberce_2
             current.Address2 = txtAddress2.Text;
             current.Phone = txtPhone.Text;
             current.Email = txtEmail.Text;
-            var ns = cbNumberSerie.SelectedItem as NumberSerieEntity;
+            var ns = cbCustomerTypes.SelectedItem as CustomerEntity.CCustomerType;
             if (ns != null)
-                current.NrSerieId = ns.Id;
+                current.DCustomerType = ns.id;
             else
-                current.NrSerieId = null;
+                current.DCustomerType = null;
 
             current.Comment = txtComment.Text;
         }
@@ -126,9 +127,9 @@ namespace Koberce_2
         private void gridSuppliers_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (gridSuppliers.SelectedCells == null || gridSuppliers.SelectedCells.Count == 0)
-                current = SupplierEntity.Empty;
+                current = CustomerEntity.Empty;
             else
-                current = gridSuppliers.Rows[e.RowIndex].DataBoundItem as SupplierEntity;
+                current = gridSuppliers.Rows[e.RowIndex].DataBoundItem as CustomerEntity;
 
             ShowItem(current);
         }
