@@ -20,10 +20,10 @@ namespace Koberce_2
             model = new Model(this);
 
             tabMain.TabPages.Clear();
-            TabAddDbHelper("Suppliers", new ucSuppliers());
-            TabAddDbHelper("Customers", new ucCustomers());
-            TabAddDbHelper("Number series", new ucNumberSeries());
-            TabAddDbHelper("Database helper", new ucDBHelper());
+            TabAddNew("Suppliers", new ucSuppliers());
+            TabAddNew("Customers", new ucCustomers());
+            TabAddNew("Number series", new ucNumberSeries());
+            TabAddNew("Database helper", new ucDBHelper());
         }
 
         private void toolDbHelper_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace Koberce_2
         /// Pridanie tabu s usercontrolom
         /// </summary>
         /// <returns></returns>
-        private void TabAddDbHelper(string title, Control uc)
+        private void TabAddNew(string title, Control uc)
         {
             var newTab = new TabPage(title);
             tabMain.TabPages.Add(newTab);

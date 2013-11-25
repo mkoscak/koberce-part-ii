@@ -54,6 +54,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(49, 247);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
@@ -75,6 +76,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label2.Location = new System.Drawing.Point(33, 275);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
@@ -84,6 +86,7 @@
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtName.ForeColor = System.Drawing.Color.Maroon;
             this.txtName.Location = new System.Drawing.Point(74, 272);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(184, 20);
@@ -92,6 +95,7 @@
             // txtPrefix
             // 
             this.txtPrefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPrefix.ForeColor = System.Drawing.Color.Maroon;
             this.txtPrefix.Location = new System.Drawing.Point(74, 298);
             this.txtPrefix.Name = "txtPrefix";
             this.txtPrefix.Size = new System.Drawing.Size(184, 20);
@@ -101,6 +105,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label3.Location = new System.Drawing.Point(35, 301);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
@@ -110,6 +115,7 @@
             // txtLastNr
             // 
             this.txtLastNr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtLastNr.ForeColor = System.Drawing.Color.Maroon;
             this.txtLastNr.Location = new System.Drawing.Point(74, 324);
             this.txtLastNr.Name = "txtLastNr";
             this.txtLastNr.Size = new System.Drawing.Size(184, 20);
@@ -119,6 +125,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label4.Location = new System.Drawing.Point(3, 327);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
@@ -128,6 +135,7 @@
             // txtComment
             // 
             this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtComment.ForeColor = System.Drawing.Color.Maroon;
             this.txtComment.Location = new System.Drawing.Point(74, 350);
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(184, 20);
@@ -137,6 +145,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label5.Location = new System.Drawing.Point(18, 353);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
@@ -192,10 +201,11 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(264, 275);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.Size = new System.Drawing.Size(13, 16);
             this.label6.TabIndex = 16;
             this.label6.Text = "*";
             // 
@@ -203,10 +213,11 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.Red;
             this.label7.Location = new System.Drawing.Point(264, 327);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 13);
+            this.label7.Size = new System.Drawing.Size(13, 16);
             this.label7.TabIndex = 17;
             this.label7.Text = "*";
             // 
@@ -225,6 +236,7 @@
             // 
             this.gridSeries.AllowUserToAddRows = false;
             this.gridSeries.AllowUserToDeleteRows = false;
+            this.gridSeries.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
             this.gridSeries.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridSeries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
