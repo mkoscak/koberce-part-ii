@@ -65,7 +65,7 @@ namespace Koberce_2.Entities
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5}", ID, NAME, PREFIX, LAST_NR, COMMENT, VALID),
                 string.Format("{0},\"{1}\",\"{2}\",{3},\"{4}\",{5}",
-                    Common.NullableLong(Id), Name, Prefix, LastNr, Comment, Valid ? "1" : "0"
+                    Common.NullableLong(Id), Name, Prefix, LastNr, Comment, Valid ? 1 : 0
                 ));
         }
 

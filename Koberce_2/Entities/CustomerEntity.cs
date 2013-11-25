@@ -81,7 +81,7 @@ namespace Koberce_2.Entities
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", ID, NAME, ADDRESS, ADDRESS2, PHONE, EMAIL, CUSTOMER_TYPE, COMMENT, VALID),
                 string.Format("{0},\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",{6},\"{7}\",{8}",
-                Common.NullableLong(Id), Name, Address, Address2, Phone, Email, Common.NullableLong(DCustomerType), Comment, Valid ? "1" : "0"
+                Common.NullableLong(Id), Name, Address, Address2, Phone, Email, Common.NullableLong(DCustomerType), Comment, Valid ? 1 : 0
                 ));
         }
 

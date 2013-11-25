@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
-            this.btnToolExit = new System.Windows.Forms.ToolStripButton();
-            this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
-            this.toolCustomers = new System.Windows.Forms.ToolStripButton();
-            this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
-            this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExRateLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolExRateCzk = new System.Windows.Forms.ToolStripTextBox();
+            this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
+            this.toolCustomers = new System.Windows.Forms.ToolStripButton();
+            this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
+            this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
+            this.toolStorages = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             this.btnToolExit,
             this.toolSuppliers,
             this.toolCustomers,
+            this.toolStorages,
             this.toolNrSeries,
             this.toolDbHelper,
             this.toolStripSeparator1,
@@ -65,6 +67,54 @@
             this.toolbarMain.Size = new System.Drawing.Size(1138, 55);
             this.toolbarMain.TabIndex = 0;
             this.toolbarMain.Text = "Toolbar";
+            // 
+            // tabMain
+            // 
+            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabMain.Location = new System.Drawing.Point(3, 58);
+            this.tabMain.Multiline = true;
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(1135, 607);
+            this.tabMain.TabIndex = 1;
+            // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel1});
+            this.statusBar.Location = new System.Drawing.Point(0, 668);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(1138, 22);
+            this.statusBar.TabIndex = 2;
+            this.statusBar.Text = "Status bar";
+            // 
+            // statusLabel1
+            // 
+            this.statusLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.statusLabel1.Name = "statusLabel1";
+            this.statusLabel1.Size = new System.Drawing.Size(77, 17);
+            this.statusLabel1.Text = "Form loaded!";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
+            // 
+            // toolExRateLabel
+            // 
+            this.toolExRateLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolExRateLabel.Name = "toolExRateLabel";
+            this.toolExRateLabel.Size = new System.Drawing.Size(140, 52);
+            this.toolExRateLabel.Text = "CZK / EUR exchange rate:";
+            // 
+            // toolExRateCzk
+            // 
+            this.toolExRateCzk.ForeColor = System.Drawing.Color.Maroon;
+            this.toolExRateCzk.Name = "toolExRateCzk";
+            this.toolExRateCzk.Size = new System.Drawing.Size(50, 55);
+            this.toolExRateCzk.Text = "27.269";
             // 
             // btnToolExit
             // 
@@ -117,53 +167,15 @@
             this.toolDbHelper.Text = "Database helper";
             this.toolDbHelper.Click += new System.EventHandler(this.toolDbHelper_Click);
             // 
-            // tabMain
+            // toolStorages
             // 
-            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabMain.Location = new System.Drawing.Point(3, 58);
-            this.tabMain.Multiline = true;
-            this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1135, 607);
-            this.tabMain.TabIndex = 1;
-            // 
-            // statusBar
-            // 
-            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel1});
-            this.statusBar.Location = new System.Drawing.Point(0, 668);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(1138, 22);
-            this.statusBar.TabIndex = 2;
-            this.statusBar.Text = "Status bar";
-            // 
-            // statusLabel1
-            // 
-            this.statusLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.statusLabel1.Name = "statusLabel1";
-            this.statusLabel1.Size = new System.Drawing.Size(77, 17);
-            this.statusLabel1.Text = "Form loaded!";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
-            // 
-            // toolExRateLabel
-            // 
-            this.toolExRateLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolExRateLabel.Name = "toolExRateLabel";
-            this.toolExRateLabel.Size = new System.Drawing.Size(140, 52);
-            this.toolExRateLabel.Text = "CZK / EUR exchange rate:";
-            // 
-            // toolExRateCzk
-            // 
-            this.toolExRateCzk.ForeColor = System.Drawing.Color.Maroon;
-            this.toolExRateCzk.Name = "toolExRateCzk";
-            this.toolExRateCzk.Size = new System.Drawing.Size(50, 55);
-            this.toolExRateCzk.Text = "27.269";
+            this.toolStorages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStorages.Image = ((System.Drawing.Image)(resources.GetObject("toolStorages.Image")));
+            this.toolStorages.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStorages.Name = "toolStorages";
+            this.toolStorages.Size = new System.Drawing.Size(52, 52);
+            this.toolStorages.Text = "Storages";
+            this.toolStorages.Click += new System.EventHandler(this.toolStorages_Click);
             // 
             // FrmMain
             // 
@@ -203,6 +215,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolExRateLabel;
         private System.Windows.Forms.ToolStripTextBox toolExRateCzk;
+        private System.Windows.Forms.ToolStripButton toolStorages;
     }
 }
 
