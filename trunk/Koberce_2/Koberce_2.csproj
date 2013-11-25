@@ -66,6 +66,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\NumberSerieEntity.cs" />
+    <Compile Include="Entities\StorageEntity.cs" />
     <Compile Include="Entities\SupplierEntity.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -95,6 +96,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucNumberSeries.resx">
       <DependentUpon>ucNumberSeries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucStorages.resx">
+      <DependentUpon>ucStorages.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ucSuppliers.resx">
@@ -132,6 +137,12 @@
     </Compile>
     <Compile Include="ucNumberSeries.Designer.cs">
       <DependentUpon>ucNumberSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucStorages.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucStorages.designer.cs">
+      <DependentUpon>ucStorages.cs</DependentUpon>
     </Compile>
     <Compile Include="ucSuppliers.cs">
       <SubType>UserControl</SubType>
