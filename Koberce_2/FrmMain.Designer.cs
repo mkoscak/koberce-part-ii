@@ -30,14 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
-            this.tabMain = new System.Windows.Forms.TabControl();
-            this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
             this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
             this.toolCustomers = new System.Windows.Forms.ToolStripButton();
             this.toolNrSeries = new System.Windows.Forms.ToolStripButton();
             this.toolDbHelper = new System.Windows.Forms.ToolStripButton();
+            this.tabMain = new System.Windows.Forms.TabControl();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolExRateLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolExRateCzk = new System.Windows.Forms.ToolStripTextBox();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -52,42 +55,16 @@
             this.toolSuppliers,
             this.toolCustomers,
             this.toolNrSeries,
-            this.toolDbHelper});
+            this.toolDbHelper,
+            this.toolStripSeparator1,
+            this.toolExRateLabel,
+            this.toolExRateCzk});
             this.toolbarMain.Location = new System.Drawing.Point(0, 0);
             this.toolbarMain.Name = "toolbarMain";
             this.toolbarMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolbarMain.Size = new System.Drawing.Size(1138, 55);
             this.toolbarMain.TabIndex = 0;
             this.toolbarMain.Text = "Toolbar";
-            // 
-            // tabMain
-            // 
-            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabMain.Location = new System.Drawing.Point(3, 58);
-            this.tabMain.Multiline = true;
-            this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1135, 607);
-            this.tabMain.TabIndex = 1;
-            // 
-            // statusBar
-            // 
-            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel1});
-            this.statusBar.Location = new System.Drawing.Point(0, 668);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(1138, 22);
-            this.statusBar.TabIndex = 2;
-            this.statusBar.Text = "Status bar";
-            // 
-            // statusLabel1
-            // 
-            this.statusLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.statusLabel1.Name = "statusLabel1";
-            this.statusLabel1.Size = new System.Drawing.Size(77, 17);
-            this.statusLabel1.Text = "Form loaded!";
             // 
             // btnToolExit
             // 
@@ -140,6 +117,54 @@
             this.toolDbHelper.Text = "Database helper";
             this.toolDbHelper.Click += new System.EventHandler(this.toolDbHelper_Click);
             // 
+            // tabMain
+            // 
+            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabMain.Location = new System.Drawing.Point(3, 58);
+            this.tabMain.Multiline = true;
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(1135, 607);
+            this.tabMain.TabIndex = 1;
+            // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel1});
+            this.statusBar.Location = new System.Drawing.Point(0, 668);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(1138, 22);
+            this.statusBar.TabIndex = 2;
+            this.statusBar.Text = "Status bar";
+            // 
+            // statusLabel1
+            // 
+            this.statusLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.statusLabel1.Name = "statusLabel1";
+            this.statusLabel1.Size = new System.Drawing.Size(77, 17);
+            this.statusLabel1.Text = "Form loaded!";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
+            // 
+            // toolExRateLabel
+            // 
+            this.toolExRateLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolExRateLabel.Name = "toolExRateLabel";
+            this.toolExRateLabel.Size = new System.Drawing.Size(140, 52);
+            this.toolExRateLabel.Text = "CZK / EUR exchange rate:";
+            // 
+            // toolExRateCzk
+            // 
+            this.toolExRateCzk.ForeColor = System.Drawing.Color.Maroon;
+            this.toolExRateCzk.Name = "toolExRateCzk";
+            this.toolExRateCzk.Size = new System.Drawing.Size(50, 55);
+            this.toolExRateCzk.Text = "27.269";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,7 +178,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.4";
+            this.Text = "Global - part II - v0.3.5";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
@@ -175,6 +200,9 @@
         private System.Windows.Forms.ToolStripButton toolNrSeries;
         private System.Windows.Forms.ToolStripButton toolSuppliers;
         private System.Windows.Forms.ToolStripButton toolCustomers;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel toolExRateLabel;
+        private System.Windows.Forms.ToolStripTextBox toolExRateCzk;
     }
 }
 

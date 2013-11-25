@@ -60,7 +60,8 @@ namespace Koberce_2
             txtAddress2.Text = ent.Address2;
             txtPhone.Text = ent.Phone;
             txtEmail.Text = ent.Email;
-            cbCustomerTypes.SelectedIndex = (int)(ent.DCustomerType ?? 0);
+            if (cbCustomerTypes.Items.Count > 0)
+                cbCustomerTypes.SelectedIndex = (int)(ent.DCustomerType ?? 0);
             txtComment.Text = ent.Comment;
         }
 

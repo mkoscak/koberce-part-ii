@@ -25,6 +25,7 @@ namespace Koberce_2
                 AlternatingRowsDefaultCellStyle.BackColor = SystemColors.Info;
 
             var selector = new DataGridViewColumnSelector(this);
+            AllowUserToResizeRows = false;
         }
     }
 
