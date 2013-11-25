@@ -33,11 +33,11 @@ namespace Koberce_2
 
         private void ReloadAllData()
         {
+            ReloadCustomerTypes();
+
             gridSuppliers.DataSource = null;
             var data = CustomerEntity.LoadAll();
             gridSuppliers.DataSource = data;
-
-            ReloadCustomerTypes();
         }
 
         private void ReloadCustomerTypes()
@@ -80,7 +80,7 @@ namespace Koberce_2
             if (ns != null)
                 current.DCustomerType = ns.id;
             else
-                current.DCustomerType = null;
+                throw new Exception("Customer type is mandatory item!");
 
             current.Comment = txtComment.Text;
         }

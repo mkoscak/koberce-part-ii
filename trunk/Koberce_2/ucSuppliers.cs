@@ -32,11 +32,11 @@ namespace Koberce_2
 
         private void ReloadAllData()
         {
+            ReloadNumSeries();
+
             gridSuppliers.DataSource = null;
             var data = SupplierEntity.LoadAll();
             gridSuppliers.DataSource = data;
-
-            ReloadNumSeries();
         }
 
         private void ReloadNumSeries()
@@ -78,7 +78,7 @@ namespace Koberce_2
             if (ns != null)
                 current.NrSerieId = ns.Id;
             else
-                current.NrSerieId = null;
+                throw new Exception("Number serie is mandatory item!");
 
             current.Comment = txtComment.Text;
         }
