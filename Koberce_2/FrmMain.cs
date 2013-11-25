@@ -25,6 +25,9 @@ namespace Koberce_2
             TabAddNew("Storages", new ucStorages());
             TabAddNew("Number series", new ucNumberSeries());
             TabAddNew("Database helper", new ucDBHelper());
+
+            // TODO read exchange rates from net..
+            toolExRateCzk.Text = Common.CleanPrice(toolExRateCzk.Text);
         }
 
         private void toolDbHelper_Click(object sender, EventArgs e)

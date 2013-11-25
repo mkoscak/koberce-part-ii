@@ -114,7 +114,7 @@
             this.toolExRateCzk.ForeColor = System.Drawing.Color.Maroon;
             this.toolExRateCzk.Name = "toolExRateCzk";
             this.toolExRateCzk.Size = new System.Drawing.Size(50, 55);
-            this.toolExRateCzk.Text = "27.269";
+            this.toolExRateCzk.Text = "27,269";
             // 
             // btnToolExit
             // 
@@ -190,7 +190,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.5";
+            this.Text = "Global - part II - v0.3.6";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
