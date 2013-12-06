@@ -20,6 +20,7 @@ namespace Koberce_2
             model = new Model(this);
 
             tabMain.TabPages.Clear();
+            TabAddNew("Products", new ucProducts());
             TabAddNew("Suppliers", new ucSuppliers());
             TabAddNew("Customers", new ucCustomers());
             TabAddNew("Storages", new ucStorages());

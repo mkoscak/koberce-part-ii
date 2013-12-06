@@ -93,7 +93,7 @@ namespace Koberce_2.Entities
         /// <returns></returns>
         public DataRow GetById(long id)
         {
-            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where id = {1}", DBProvider.T_NUMBER_SERIE, id));
+            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where id = {1}", TableName, id));
             if (ds == null || ds.Tables == null || ds.Tables.Count == 0 || ds.Tables[0].Rows == null || ds.Tables[0].Rows.Count == 0)
                 return null;
 
