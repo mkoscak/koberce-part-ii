@@ -53,7 +53,7 @@
             this.txtNonQueryRes.Multiline = true;
             this.txtNonQueryRes.Name = "txtNonQueryRes";
             this.txtNonQueryRes.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtNonQueryRes.Size = new System.Drawing.Size(520, 272);
+            this.txtNonQueryRes.Size = new System.Drawing.Size(521, 272);
             this.txtNonQueryRes.TabIndex = 3;
             this.txtNonQueryRes.WordWrap = false;
             // 
@@ -67,7 +67,7 @@
             this.txtQuery.Multiline = true;
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtQuery.Size = new System.Drawing.Size(272, 272);
+            this.txtQuery.Size = new System.Drawing.Size(271, 272);
             this.txtQuery.TabIndex = 4;
             this.txtQuery.Text = resources.GetString("txtQuery.Text");
             this.txtQuery.WordWrap = false;
@@ -121,7 +121,7 @@
             // 
             this.splitBoxes.Panel2.Controls.Add(this.txtNonQueryRes);
             this.splitBoxes.Size = new System.Drawing.Size(947, 282);
-            this.splitBoxes.SplitterDistance = 413;
+            this.splitBoxes.SplitterDistance = 412;
             this.splitBoxes.TabIndex = 9;
             // 
             // gridDBres

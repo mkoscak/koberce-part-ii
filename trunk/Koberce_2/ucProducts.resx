@@ -117,24 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtQuery.Text" xml:space="preserve">
-    <value>select * from sqlite_master
-
-select * from T_PRODUCT
-
-select * from T_STORAGE
-
-select * from T_STORAGE_STATE
-
-select * from T_NUMBER_SERIE
-
-select * from T_SUPPLIER
-
-select * from T_CUSTOMER
-
-select * from T_INVOICE
-
-select * from T_SOLD_ITEM
-</value>
-  </data>
 </root>

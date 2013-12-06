@@ -9,10 +9,10 @@ namespace Koberce_2
 {
     public class DBProvider
     {
-        public static string[] Tables = { "T_GLOBAL", "T_STORAGE", "T_STORAGE_STATE", "T_NUMBER_SERIE", "T_SUPPLIER", "T_CUSTOMER", "T_INVOICE", "T_SOLD_ITEM" };
+        public static string[] Tables = { "T_PRODUCT", "T_STORAGE", "T_STORAGE_STATE", "T_NUMBER_SERIE", "T_SUPPLIER", "T_CUSTOMER", "T_INVOICE", "T_SOLD_ITEM" };
 
         // table names
-        public static string T_GLOBAL = Tables[0];
+        public static string T_PRODUCT = Tables[0];
         public static string T_STORAGE = Tables[1];
         public static string T_STORAGE_STATE = Tables[2];
         public static string T_NUMBER_SERIE = Tables[3];
