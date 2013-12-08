@@ -10,7 +10,7 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucProducts : UserControl
+    public partial class ucProducts : UserControl, IGridHolder
     {
         ProductEntity current;
         List<SupplierEntity> suppliers;
@@ -55,6 +55,7 @@ namespace Koberce_2
 
         private void ShowItem(ProductEntity ent)
         {
+            Cursor = Cursors.WaitCursor;
             lblId.Text = ent.Id.HasValue ? ent.Id.Value.ToString() : string.Empty;
             txtProductNr.Text = ent.ProductNr;
             txtDescription.Text = ent.Description;
@@ -71,6 +72,27 @@ namespace Koberce_2
             var found = suppliers.Where(s => s.Id == ent.SupplierId).FirstOrDefault();
             if (found != null)
                 cbSuppliers.Text = found.ToString();
+            
+            // preview image
+            picPreview.Image = Common.LoadImageFromStore("1.jpg");
+            RotatePreviewIfNeeded();
+
+            Cursor = Cursors.Default;
+        }
+
+        /// <summary>
+        /// Otaca obrazok podla potreby na vysku/sirku
+        /// </summary>
+        private void RotatePreviewIfNeeded()
+        {
+            bool windowHorizontal = picPreview.Width > picPreview.Height;
+            bool picHorizontal = picPreview.Image.Width > picPreview.Image.Height;
+
+            // no need to do anything
+            if ((windowHorizontal && picHorizontal) || (!windowHorizontal && !picHorizontal))
+                return;
+
+            picPreview.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
         }
 
         private void LoadCurrent()
@@ -148,5 +170,19 @@ namespace Koberce_2
 
             ShowItem(current);
         }
+
+        private void picPreview_Resize(object sender, EventArgs e)
+        {
+            RotatePreviewIfNeeded();
+        }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridProducts;
+        }
+
+        #endregion
     }
 }

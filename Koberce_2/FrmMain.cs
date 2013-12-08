@@ -56,6 +56,11 @@ namespace Koberce_2
             ShowForm((sender as ToolStripItem).Text, new ucStorages(), (sender as ToolStripButton).Image);
         }
 
+        private void toolProducts_Click(object sender, EventArgs e)
+        {
+            ShowForm((sender as ToolStripItem).Text, new ucProducts(), (sender as ToolStripButton).Image);
+        }
+
         /// <summary>
         /// Pridanie tabu s usercontrolom
         /// </summary>
@@ -110,6 +115,14 @@ namespace Koberce_2
 #if !DEBUG
             e.Cancel = (MessageBox.Show(this, "Do you really want to exit the application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No);
 #endif
+        }
+
+        private void toolExcelexport_Click(object sender, EventArgs e)
+        {
+            var gh = tabMain.SelectedTab.Controls[0] as IGridHolder;
+            var grid = gh.GetDataGrid();
+
+            Common.ExportExcel(tabMain.SelectedTab.Text, grid);
         }
 
         #region IPresenter Members

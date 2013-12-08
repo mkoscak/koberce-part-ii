@@ -75,6 +75,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="IGridHolder.cs" />
     <Compile Include="IPresenter.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />

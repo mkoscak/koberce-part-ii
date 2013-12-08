@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Koberce_2
 {
-    public partial class ucDBHelper : UserControl
+    public partial class ucDBHelper : UserControl, IGridHolder
     {
         public ucDBHelper()
         {
@@ -50,5 +50,14 @@ namespace Koberce_2
                 txtNonQueryRes.AppendText(Environment.NewLine + ex.ToString());
             }
         }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridDBres;
+        }
+
+        #endregion
     }
 }

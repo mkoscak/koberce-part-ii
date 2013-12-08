@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -62,7 +62,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtForm = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.groupPreview = new System.Windows.Forms.GroupBox();
+            this.picPreview = new System.Windows.Forms.PictureBox();
             this.gridProducts = new Koberce_2.DoubleBufferedGrid();
+            this.groupPreview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -377,13 +381,39 @@
             this.label16.TabIndex = 46;
             this.label16.Text = "Form";
             // 
+            // groupPreview
+            // 
+            this.groupPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupPreview.Controls.Add(this.picPreview);
+            this.groupPreview.Location = new System.Drawing.Point(3, 413);
+            this.groupPreview.Name = "groupPreview";
+            this.groupPreview.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupPreview.Size = new System.Drawing.Size(296, 183);
+            this.groupPreview.TabIndex = 48;
+            this.groupPreview.TabStop = false;
+            this.groupPreview.Text = "Product preview";
+            // 
+            // picPreview
+            // 
+            this.picPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.picPreview.Location = new System.Drawing.Point(8, 19);
+            this.picPreview.Name = "picPreview";
+            this.picPreview.Size = new System.Drawing.Size(282, 158);
+            this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPreview.TabIndex = 0;
+            this.picPreview.TabStop = false;
+            this.picPreview.Resize += new System.EventHandler(this.picPreview_Resize);
+            // 
             // gridProducts
             // 
             this.gridProducts.AllowUserToAddRows = false;
             this.gridProducts.AllowUserToDeleteRows = false;
             this.gridProducts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            this.gridProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            this.gridProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -399,6 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupPreview);
             this.Controls.Add(this.txtForm);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtMatInside);
@@ -435,6 +466,8 @@
             this.Controls.Add(this.gridProducts);
             this.Name = "ucProducts";
             this.Size = new System.Drawing.Size(750, 599);
+            this.groupPreview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,6 +510,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtForm;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupPreview;
+        private System.Windows.Forms.PictureBox picPreview;
 
     }
 }

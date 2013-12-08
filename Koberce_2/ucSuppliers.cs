@@ -10,10 +10,11 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucSuppliers : UserControl
+    public partial class ucSuppliers : UserControl, IGridHolder
     {
         SupplierEntity current;
-
+        List<NumberSerieEntity> allSeries;
+            
         public ucSuppliers()
         {
             InitializeComponent();
@@ -42,7 +43,8 @@ namespace Koberce_2
         private void ReloadNumSeries()
         {
             cbNumberSerie.DataSource = null;
-            cbNumberSerie.DataSource = NumberSerieEntity.LoadAll();
+            allSeries = NumberSerieEntity.LoadAll();
+            cbNumberSerie.DataSource = allSeries;
         }
 
         private void NewItem()
@@ -59,8 +61,10 @@ namespace Koberce_2
             txtAddress2.Text = ent.Address2;
             txtPhone.Text = ent.Phone;
             txtEmail.Text = ent.Email;
-            cbNumberSerie.Text = ent.NrSerieId.ToString();
             txtComment.Text = ent.Comment;
+            var found = allSeries.Where(s => s.Id == ent.NrSerieId).FirstOrDefault();
+            if (found != null)
+                cbNumberSerie.Text = found.ToString();
         }
 
         private void LoadCurrent()
@@ -132,5 +136,14 @@ namespace Koberce_2
 
             ShowItem(current);
         }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridSuppliers;
+        }
+
+        #endregion
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -52,8 +52,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.gridSuppliers = new Koberce_2.DoubleBufferedGrid();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSuppliers)).BeginInit();
+            this.gridCustomers = new Koberce_2.DoubleBufferedGrid();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCustomers)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReload
@@ -300,23 +300,23 @@
             this.label11.TabIndex = 37;
             this.label11.Text = "*";
             // 
-            // gridSuppliers
+            // gridCustomers
             // 
-            this.gridSuppliers.AllowUserToAddRows = false;
-            this.gridSuppliers.AllowUserToDeleteRows = false;
-            this.gridSuppliers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            this.gridSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.gridCustomers.AllowUserToAddRows = false;
+            this.gridCustomers.AllowUserToDeleteRows = false;
+            this.gridCustomers.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            this.gridCustomers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSuppliers.Location = new System.Drawing.Point(3, 3);
-            this.gridSuppliers.Name = "gridSuppliers";
-            this.gridSuppliers.ReadOnly = true;
-            this.gridSuppliers.Size = new System.Drawing.Size(744, 305);
-            this.gridSuppliers.TabIndex = 0;
-            this.gridSuppliers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
+            this.gridCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCustomers.Location = new System.Drawing.Point(3, 3);
+            this.gridCustomers.Name = "gridCustomers";
+            this.gridCustomers.ReadOnly = true;
+            this.gridCustomers.Size = new System.Drawing.Size(744, 305);
+            this.gridCustomers.TabIndex = 0;
+            this.gridCustomers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
             // 
             // ucCustomers
             // 
@@ -345,10 +345,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gridSuppliers);
+            this.Controls.Add(this.gridCustomers);
             this.Name = "ucCustomers";
             this.Size = new System.Drawing.Size(750, 599);
-            ((System.ComponentModel.ISupportInitialize)(this.gridSuppliers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCustomers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +366,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label1;
-        private DoubleBufferedGrid gridSuppliers;
+        private DoubleBufferedGrid gridCustomers;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAddress2;
