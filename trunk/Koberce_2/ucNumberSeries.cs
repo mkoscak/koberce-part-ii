@@ -10,7 +10,7 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucNumberSeries : UserControl
+    public partial class ucNumberSeries : UserControl, IGridHolder
     {
         NumberSerieEntity current;
 
@@ -127,5 +127,14 @@ namespace Koberce_2
         {
             ReloadAllData();
         }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridSeries;
+        }
+
+        #endregion
     }
 }

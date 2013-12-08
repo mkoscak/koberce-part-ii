@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolProducts = new System.Windows.Forms.ToolStripButton();
             this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
             this.toolCustomers = new System.Windows.Forms.ToolStripButton();
             this.toolStorages = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +43,8 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolExcelexport = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +56,7 @@
             this.toolbarMain.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnToolExit,
+            this.toolProducts,
             this.toolSuppliers,
             this.toolCustomers,
             this.toolStorages,
@@ -60,7 +64,9 @@
             this.toolDbHelper,
             this.toolStripSeparator1,
             this.toolExRateLabel,
-            this.toolExRateCzk});
+            this.toolExRateCzk,
+            this.toolStripSeparator2,
+            this.toolExcelexport});
             this.toolbarMain.Location = new System.Drawing.Point(0, 0);
             this.toolbarMain.Name = "toolbarMain";
             this.toolbarMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -78,6 +84,16 @@
             this.btnToolExit.Size = new System.Drawing.Size(52, 52);
             this.btnToolExit.Text = "Exit application";
             this.btnToolExit.Click += new System.EventHandler(this.btnToolExit_Click);
+            // 
+            // toolProducts
+            // 
+            this.toolProducts.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolProducts.Image = ((System.Drawing.Image)(resources.GetObject("toolProducts.Image")));
+            this.toolProducts.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolProducts.Name = "toolProducts";
+            this.toolProducts.Size = new System.Drawing.Size(52, 52);
+            this.toolProducts.Text = "Products";
+            this.toolProducts.Click += new System.EventHandler(this.toolProducts_Click);
             // 
             // toolSuppliers
             // 
@@ -177,6 +193,21 @@
             this.statusLabel1.Size = new System.Drawing.Size(70, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
+            // 
+            // toolExcelexport
+            // 
+            this.toolExcelexport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolExcelexport.Image = ((System.Drawing.Image)(resources.GetObject("toolExcelexport.Image")));
+            this.toolExcelexport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExcelexport.Name = "toolExcelexport";
+            this.toolExcelexport.Size = new System.Drawing.Size(52, 52);
+            this.toolExcelexport.Text = "Export actual table to excel";
+            this.toolExcelexport.Click += new System.EventHandler(this.toolExcelexport_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,7 +221,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.7";
+            this.Text = "Global - part II - v0.3.8";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
@@ -216,6 +247,9 @@
         private System.Windows.Forms.ToolStripLabel toolExRateLabel;
         private System.Windows.Forms.ToolStripTextBox toolExRateCzk;
         private System.Windows.Forms.ToolStripButton toolStorages;
+        private System.Windows.Forms.ToolStripButton toolProducts;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolExcelexport;
     }
 }
 

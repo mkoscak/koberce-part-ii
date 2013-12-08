@@ -10,7 +10,7 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucCustomers : UserControl
+    public partial class ucCustomers : UserControl, IGridHolder
     {
 
         CustomerEntity current;
@@ -35,9 +35,9 @@ namespace Koberce_2
         {
             ReloadCustomerTypes();
 
-            gridSuppliers.DataSource = null;
+            gridCustomers.DataSource = null;
             var data = CustomerEntity.LoadAll();
-            gridSuppliers.DataSource = data;
+            gridCustomers.DataSource = data;
         }
 
         private void ReloadCustomerTypes()
@@ -127,12 +127,21 @@ namespace Koberce_2
 
         private void gridSuppliers_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (gridSuppliers.SelectedCells == null || gridSuppliers.SelectedCells.Count == 0)
+            if (gridCustomers.SelectedCells == null || gridCustomers.SelectedCells.Count == 0)
                 current = CustomerEntity.Empty;
             else
-                current = gridSuppliers.Rows[e.RowIndex].DataBoundItem as CustomerEntity;
+                current = gridCustomers.Rows[e.RowIndex].DataBoundItem as CustomerEntity;
 
             ShowItem(current);
         }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridCustomers;
+        }
+
+        #endregion
     }
 }

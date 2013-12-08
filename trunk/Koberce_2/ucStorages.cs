@@ -10,7 +10,7 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    public partial class ucStorages : UserControl
+    public partial class ucStorages : UserControl, IGridHolder
     {
         StorageEntity current;
 
@@ -118,5 +118,14 @@ namespace Koberce_2
 
             ShowItem(current);
         }
+
+        #region IGridHolder Members
+
+        public DoubleBufferedGrid GetDataGrid()
+        {
+            return gridStorages;
+        }
+
+        #endregion
     }
 }
