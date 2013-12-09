@@ -8,11 +8,18 @@ using OfficeOpenXml;
 using System.Windows.Forms;
 using System.IO;
 using OfficeOpenXml.Style;
+using Koberce_2.Entities;
 
 namespace Koberce_2
 {
     class Common
     {
+        public static IPresenter PresenterInst
+        {
+            get;
+            set;
+        }
+     
         public static string NullableLong(long? l)
         {
             return l.HasValue ? l.Value.ToString() : "null";
@@ -69,10 +76,11 @@ namespace Koberce_2
             try
             {
                 ret = Image.FromFile(path + fileName);
+                PresenterInst.ShowStatus(string.Format("Preview image '{0}' loaded!", fileName));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO - sttaus bar message
+                PresenterInst.ShowStatus(string.Format("Error during reading image '{0}': {1}", fileName, ex.Message));
             }
 
             return ret;
@@ -84,9 +92,16 @@ namespace Koberce_2
             if (fName == null)
                 return;
 
-            DoExport(fName, grid);
+            try
+            {
+                DoExport(fName, grid);
 
-            MessageBox.Show(null, "Export finished!", "Excel export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(null, "Export finished!", "Excel export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                PresenterInst.ShowStatus(string.Format("Error during export: {0}", ex.Message));
+            }
         }
 
         private static void DoExport(string fName, DoubleBufferedGrid grid)
@@ -106,6 +121,7 @@ namespace Koberce_2
                 ws.Cells[1, col].Style.Font.Bold = true;
                 ws.Cells[1, col].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells[1, col].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                ws.Column(col).Width = 17;
 
                 var row = 2;
                 for (int j = 0; j < grid.Rows.Count; j++)
@@ -113,7 +129,13 @@ namespace Koberce_2
                     var obj = grid[i, j].Value;
                     // farbicky pre parne riadky
                     if (obj != null)
-                        ws.Cells[row, col].Value = obj.ToString();
+                    {
+                        var dp = GetPrice(obj.ToString());
+                        if (!double.IsNaN(dp))
+                            ws.Cells[row, col].Value = dp;
+                        else
+                            ws.Cells[row, col].Value = obj.ToString();
+                }
 
                     if (row % 2 == 1)
                     {
@@ -145,6 +167,24 @@ namespace Koberce_2
                 return null;
 
             return sfd.FileName;
+        }
+
+        public static bool FindEntityInGrid<T>(DoubleBufferedGrid grid, long id)
+            where T : BaseEntity<T>, new()
+        {
+            var ds = grid.DataSource as List<T>;
+
+            grid.ClearSelection();
+            for (int i = 0; i < ds.Count; i++)
+            {
+                if (ds[i].Id == id)
+                {
+                    grid[0, i].Selected = true;
+                    return true;
+                }
+			}
+
+            return false;
         }
     }
 }

@@ -52,29 +52,7 @@ namespace Koberce_2.Entities
 
         public static List<CustomerEntity> LoadAll()
         {
-            var ret = new List<CustomerEntity>();
-            var table = LoadAllValidData(DBProvider.T_CUSTOMER);
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var toAdd = new CustomerEntity();
-                toAdd.ParseFromRow(table.Rows[i]);
-
-                ret.Add(toAdd);
-            }
-
-            return ret;
-        }
-
-        public void Load(long id)
-        {
-            Clear();
-
-            var row = base.GetById(id);
-            if (row == null)
-                return;
-
-            ParseFromRow(row);
+            return BaseEntity<CustomerEntity>.LoadAll(DBProvider.T_CUSTOMER);
         }
 
         public void Save()

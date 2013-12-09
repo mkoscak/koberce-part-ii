@@ -273,13 +273,14 @@
             this.gridStorages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridStorages.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridStorages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridStorages.Location = new System.Drawing.Point(3, 3);
             this.gridStorages.Name = "gridStorages";
             this.gridStorages.ReadOnly = true;
             this.gridStorages.Size = new System.Drawing.Size(744, 337);
             this.gridStorages.TabIndex = 0;
-            this.gridStorages.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
+            this.gridStorages.SelectionChanged += new System.EventHandler(this.gridStorages_SelectionChanged);
             // 
             // ucStorages
             // 

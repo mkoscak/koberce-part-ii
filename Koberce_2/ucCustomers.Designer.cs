@@ -310,13 +310,14 @@
             this.gridCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridCustomers.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCustomers.Location = new System.Drawing.Point(3, 3);
             this.gridCustomers.Name = "gridCustomers";
             this.gridCustomers.ReadOnly = true;
             this.gridCustomers.Size = new System.Drawing.Size(744, 305);
             this.gridCustomers.TabIndex = 0;
-            this.gridCustomers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
+            this.gridCustomers.SelectionChanged += new System.EventHandler(this.gridCustomers_SelectionChanged);
             // 
             // ucCustomers
             // 

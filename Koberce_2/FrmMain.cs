@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Koberce_2.Entities;
 
 namespace Koberce_2
 {
@@ -18,6 +19,7 @@ namespace Koberce_2
             InitializeComponent();
 
             model = new Model(this);
+            Common.PresenterInst = this;
 
             tabMain.TabPages.Clear();
             TabAddNew("Products", new ucProducts());
@@ -92,10 +94,15 @@ namespace Koberce_2
             uc.Size = uc.Parent.ClientSize;
             uc.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
 
-            Bitmap bitmap = new Bitmap(i);
-            var c = System.Drawing.Icon.FromHandle(bitmap.GetHicon());
+            if (i != null)
+            {
+                Bitmap bitmap = new Bitmap(i);
+                var c = System.Drawing.Icon.FromHandle(bitmap.GetHicon());
+                frm.Icon = c;
+            }
+            else
+                frm.Icon = this.Icon;
 
-            frm.Icon = c;
             frm.Show(this);
         }
 
@@ -125,11 +132,40 @@ namespace Koberce_2
             Common.ExportExcel(tabMain.SelectedTab.Text, grid);
         }
 
+        private void toolBack_Click(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 0)
+                return;
+            tabMain.SelectedIndex--;
+        }
+
+        private void toolNextTab_Click(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == tabMain.TabCount - 1)
+                return;
+
+            tabMain.SelectedIndex++;
+        }
+
         #region IPresenter Members
 
         public void ShowStatus(string status)
         {
             statusLabel1.Text = status;
+        }
+
+        public void FindShowEntity(Type ofType, long id)
+        {
+            foreach (TabPage item in tabMain.TabPages)
+            {
+                var c = item.Controls[0];
+                if (c != null && c is IGridHolder && (c as IGridHolder).ContainsEntities(ofType))
+                {
+                    tabMain.SelectedTab = item;
+                    if ((c as IGridHolder).FindEntity(id) == false)
+                        ShowStatus("Entity not found! (id = "+id+")");
+                }
+            }
         }
 
         #endregion

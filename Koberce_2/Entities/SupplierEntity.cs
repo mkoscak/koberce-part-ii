@@ -41,29 +41,7 @@ namespace Koberce_2.Entities
 
         public static List<SupplierEntity> LoadAll()
         {
-            var ret = new List<SupplierEntity>();
-            var table = LoadAllValidData(DBProvider.T_SUPPLIER);
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var toAdd = new SupplierEntity();
-                toAdd.ParseFromRow(table.Rows[i]);
-
-                ret.Add(toAdd);
-            }
-
-            return ret;
-        }
-
-        public void Load(long id)
-        {
-            Clear();
-
-            var row = base.GetById(id);
-            if (row == null)
-                return;
-
-            ParseFromRow(row);
+            return BaseEntity<SupplierEntity>.LoadAll(DBProvider.T_SUPPLIER);
         }
 
         public void Save()

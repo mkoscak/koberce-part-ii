@@ -38,6 +38,8 @@ namespace Koberce_2
             gridProducts.DataSource = null;
             var data = ProductEntity.LoadAll();
             gridProducts.DataSource = data;
+
+            Common.PresenterInst.ShowStatus(data.Count.ToString() + " products loaded!");
         }
 
         private void ReloadSuppliers()
@@ -71,11 +73,14 @@ namespace Koberce_2
             txtComment.Text = ent.Comment;
             var found = suppliers.Where(s => s.Id == ent.SupplierId).FirstOrDefault();
             if (found != null)
+            {
                 cbSuppliers.Text = found.ToString();
-            
-            // preview image
-            picPreview.Image = Common.LoadImageFromStore("1.jpg");
-            RotatePreviewIfNeeded();
+                // preview image
+                NumberSerieEntity nse = new NumberSerieEntity();
+                nse.Load(found.NrSerieId ?? -1);
+                picPreview.Image = Common.LoadImageFromStore(nse.Prefix + "-1.jpg");
+                RotatePreviewIfNeeded();
+            }
 
             Cursor = Cursors.Default;
         }
@@ -85,6 +90,9 @@ namespace Koberce_2
         /// </summary>
         private void RotatePreviewIfNeeded()
         {
+            if (picPreview.Image == null)
+                return;
+
             bool windowHorizontal = picPreview.Width > picPreview.Height;
             bool picHorizontal = picPreview.Image.Width > picPreview.Image.Height;
 
@@ -112,10 +120,8 @@ namespace Koberce_2
             current.MaterialInside = txtMatInside.Text;
             current.Form = txtForm.Text;
 
-            var se = cbSuppliers.SelectedItem as SupplierEntity;
-            if (se != null)
-                current.SupplierId = se.Id ?? -1;
-            else
+            GetCurrentSupplier();
+            if (current.SupplierId == -1)
                 throw new Exception("Supplier is mandatory item!");
 
             current.Comment = txtComment.Text;
@@ -161,12 +167,12 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void gridSuppliers_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void gridProducts_SelectionChanged(object sender, EventArgs e)
         {
             if (gridProducts.SelectedCells == null || gridProducts.SelectedCells.Count == 0)
                 current = ProductEntity.Empty;
             else
-                current = gridProducts.Rows[e.RowIndex].DataBoundItem as ProductEntity;
+                current = gridProducts.Rows[gridProducts.SelectedCells[0].RowIndex].DataBoundItem as ProductEntity;
 
             ShowItem(current);
         }
@@ -176,11 +182,41 @@ namespace Koberce_2
             RotatePreviewIfNeeded();
         }
 
+        private void linkSupplier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GetCurrentSupplier();
+            Common.PresenterInst.FindShowEntity(typeof(SupplierEntity), current.SupplierId);
+        }
+
+        private void GetCurrentSupplier()
+        {
+            var se = cbSuppliers.SelectedItem as SupplierEntity;
+            if (se != null)
+                current.SupplierId = se.Id ?? -1;
+            else
+                current.SupplierId = -1;
+        }
+
         #region IGridHolder Members
 
         public DoubleBufferedGrid GetDataGrid()
         {
             return gridProducts;
+        }
+
+        public bool ContainsEntities(Type ofType)
+        {
+            return ofType == typeof(ProductEntity);
+        }
+
+        public bool FindEntity(long id)
+        {
+            return Common.FindEntityInGrid<ProductEntity>(GetDataGrid(), id);
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
         }
 
         #endregion

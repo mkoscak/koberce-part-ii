@@ -125,12 +125,12 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void gridSuppliers_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void gridCustomers_SelectionChanged(object sender, EventArgs e)
         {
             if (gridCustomers.SelectedCells == null || gridCustomers.SelectedCells.Count == 0)
                 current = CustomerEntity.Empty;
             else
-                current = gridCustomers.Rows[e.RowIndex].DataBoundItem as CustomerEntity;
+                current = gridCustomers.Rows[gridCustomers.SelectedCells[0].RowIndex].DataBoundItem as CustomerEntity;
 
             ShowItem(current);
         }
@@ -140,6 +140,21 @@ namespace Koberce_2
         public DoubleBufferedGrid GetDataGrid()
         {
             return gridCustomers;
+        }
+
+        public bool ContainsEntities(Type ofType)
+        {
+            return ofType == typeof(CustomerEntity);
+        }
+
+        public bool FindEntity(long id)
+        {
+            return Common.FindEntityInGrid<CustomerEntity>(GetDataGrid(), id);
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
         }
 
         #endregion
