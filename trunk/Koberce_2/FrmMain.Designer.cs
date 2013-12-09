@@ -40,11 +40,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExRateLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolExRateCzk = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolExcelexport = new System.Windows.Forms.ToolStripButton();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolExcelexport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolBack = new System.Windows.Forms.ToolStripButton();
+            this.toolNextTab = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +59,9 @@
             this.toolbarMain.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnToolExit,
+            this.toolBack,
+            this.toolNextTab,
+            this.toolStripSeparator3,
             this.toolProducts,
             this.toolSuppliers,
             this.toolCustomers,
@@ -164,6 +170,21 @@
             this.toolExRateCzk.Size = new System.Drawing.Size(50, 55);
             this.toolExRateCzk.Text = "27,269";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
+            // 
+            // toolExcelexport
+            // 
+            this.toolExcelexport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolExcelexport.Image = ((System.Drawing.Image)(resources.GetObject("toolExcelexport.Image")));
+            this.toolExcelexport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExcelexport.Name = "toolExcelexport";
+            this.toolExcelexport.Size = new System.Drawing.Size(52, 52);
+            this.toolExcelexport.Text = "Export actual table to excel";
+            this.toolExcelexport.Click += new System.EventHandler(this.toolExcelexport_Click);
+            // 
             // tabMain
             // 
             this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -193,20 +214,30 @@
             this.statusLabel1.Size = new System.Drawing.Size(70, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
-            // toolStripSeparator2
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 55);
             // 
-            // toolExcelexport
+            // toolBack
             // 
-            this.toolExcelexport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolExcelexport.Image = ((System.Drawing.Image)(resources.GetObject("toolExcelexport.Image")));
-            this.toolExcelexport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolExcelexport.Name = "toolExcelexport";
-            this.toolExcelexport.Size = new System.Drawing.Size(52, 52);
-            this.toolExcelexport.Text = "Export actual table to excel";
-            this.toolExcelexport.Click += new System.EventHandler(this.toolExcelexport_Click);
+            this.toolBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBack.Image = ((System.Drawing.Image)(resources.GetObject("toolBack.Image")));
+            this.toolBack.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBack.Name = "toolBack";
+            this.toolBack.Size = new System.Drawing.Size(52, 52);
+            this.toolBack.Text = "Previous tab";
+            this.toolBack.Click += new System.EventHandler(this.toolBack_Click);
+            // 
+            // toolNextTab
+            // 
+            this.toolNextTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolNextTab.Image = ((System.Drawing.Image)(resources.GetObject("toolNextTab.Image")));
+            this.toolNextTab.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNextTab.Name = "toolNextTab";
+            this.toolNextTab.Size = new System.Drawing.Size(52, 52);
+            this.toolNextTab.Text = "Next tab";
+            this.toolNextTab.Click += new System.EventHandler(this.toolNextTab_Click);
             // 
             // FrmMain
             // 
@@ -221,7 +252,8 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.8";
+            this.Text = "Global - part II - v0.3.9";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
@@ -250,6 +282,9 @@
         private System.Windows.Forms.ToolStripButton toolProducts;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolExcelexport;
+        private System.Windows.Forms.ToolStripButton toolBack;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolNextTab;
     }
 }
 

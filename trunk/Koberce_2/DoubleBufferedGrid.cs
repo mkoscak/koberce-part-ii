@@ -26,6 +26,7 @@ namespace Koberce_2
 
             var selector = new DataGridViewColumnSelector(this);
             AllowUserToResizeRows = false;
+            BackgroundColor = Color.Gainsboro;
         }
     }
 

@@ -242,13 +242,14 @@
             this.gridSeries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridSeries.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridSeries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSeries.Location = new System.Drawing.Point(3, 3);
             this.gridSeries.Name = "gridSeries";
             this.gridSeries.ReadOnly = true;
             this.gridSeries.Size = new System.Drawing.Size(570, 233);
             this.gridSeries.TabIndex = 15;
-            this.gridSeries.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSeries_CellEnter);
+            this.gridSeries.SelectionChanged += new System.EventHandler(this.gridSeries_SelectionChanged);
             // 
             // ucNumberSeries
             // 

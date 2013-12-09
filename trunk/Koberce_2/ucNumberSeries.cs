@@ -113,19 +113,19 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void gridSeries_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            ReloadAllData();
+        }
+
+        private void gridSeries_SelectionChanged(object sender, EventArgs e)
         {
             if (gridSeries.SelectedCells == null || gridSeries.SelectedCells.Count == 0)
                 current = NumberSerieEntity.Empty;
             else
-                current = gridSeries.Rows[e.RowIndex].DataBoundItem as NumberSerieEntity;
+                current = gridSeries.Rows[gridSeries.SelectedCells[0].RowIndex].DataBoundItem as NumberSerieEntity;
 
             ShowItem(current);
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            ReloadAllData();
         }
 
         #region IGridHolder Members
@@ -133,6 +133,21 @@ namespace Koberce_2
         public DoubleBufferedGrid GetDataGrid()
         {
             return gridSeries;
+        }
+
+        public bool ContainsEntities(Type ofType)
+        {
+            return ofType == typeof(NumberSerieEntity);
+        }
+
+        public bool FindEntity(long id)
+        {
+            return Common.FindEntityInGrid<NumberSerieEntity>(GetDataGrid(), id);
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
         }
 
         #endregion

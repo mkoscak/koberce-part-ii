@@ -47,7 +47,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.cbSuppliers = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.groupPreview = new System.Windows.Forms.GroupBox();
             this.picPreview = new System.Windows.Forms.PictureBox();
+            this.linkSupplier = new System.Windows.Forms.LinkLabel();
             this.gridProducts = new Koberce_2.DoubleBufferedGrid();
             this.groupPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
@@ -239,16 +239,6 @@
             this.label7.TabIndex = 31;
             this.label7.Text = "Weight";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label8.Location = new System.Drawing.Point(45, 296);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Supplier";
-            // 
             // cbSuppliers
             // 
             this.cbSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -407,6 +397,17 @@
             this.picPreview.TabStop = false;
             this.picPreview.Resize += new System.EventHandler(this.picPreview_Resize);
             // 
+            // linkSupplier
+            // 
+            this.linkSupplier.AutoSize = true;
+            this.linkSupplier.Location = new System.Drawing.Point(45, 298);
+            this.linkSupplier.Name = "linkSupplier";
+            this.linkSupplier.Size = new System.Drawing.Size(45, 13);
+            this.linkSupplier.TabIndex = 49;
+            this.linkSupplier.TabStop = true;
+            this.linkSupplier.Text = "Supplier";
+            this.linkSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSupplier_LinkClicked);
+            // 
             // gridProducts
             // 
             this.gridProducts.AllowUserToAddRows = false;
@@ -417,18 +418,20 @@
             this.gridProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridProducts.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProducts.Location = new System.Drawing.Point(305, 3);
             this.gridProducts.Name = "gridProducts";
             this.gridProducts.ReadOnly = true;
             this.gridProducts.Size = new System.Drawing.Size(442, 593);
             this.gridProducts.TabIndex = 0;
-            this.gridProducts.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
+            this.gridProducts.SelectionChanged += new System.EventHandler(this.gridProducts_SelectionChanged);
             // 
             // ucProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkSupplier);
             this.Controls.Add(this.groupPreview);
             this.Controls.Add(this.txtForm);
             this.Controls.Add(this.label16);
@@ -444,7 +447,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cbSuppliers);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtKnots);
@@ -495,7 +497,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbSuppliers;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -512,6 +513,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupPreview;
         private System.Windows.Forms.PictureBox picPreview;
+        private System.Windows.Forms.LinkLabel linkSupplier;
 
     }
 }

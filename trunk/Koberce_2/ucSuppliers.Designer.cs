@@ -47,11 +47,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.cbNumberSerie = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.linkNrSerie = new System.Windows.Forms.LinkLabel();
             this.gridSuppliers = new Koberce_2.DoubleBufferedGrid();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuppliers)).BeginInit();
             this.SuspendLayout();
@@ -243,17 +243,6 @@
             this.label7.TabIndex = 31;
             this.label7.Text = "E-mail";
             // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label8.Location = new System.Drawing.Point(21, 479);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Number serie";
-            // 
             // cbNumberSerie
             // 
             this.cbNumberSerie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -300,6 +289,18 @@
             this.label11.TabIndex = 37;
             this.label11.Text = "*";
             // 
+            // linkNrSerie
+            // 
+            this.linkNrSerie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkNrSerie.AutoSize = true;
+            this.linkNrSerie.Location = new System.Drawing.Point(21, 479);
+            this.linkNrSerie.Name = "linkNrSerie";
+            this.linkNrSerie.Size = new System.Drawing.Size(69, 13);
+            this.linkNrSerie.TabIndex = 38;
+            this.linkNrSerie.TabStop = true;
+            this.linkNrSerie.Text = "Number serie";
+            this.linkNrSerie.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkNrSerie_LinkClicked);
+            // 
             // gridSuppliers
             // 
             this.gridSuppliers.AllowUserToAddRows = false;
@@ -310,23 +311,24 @@
             this.gridSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridSuppliers.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSuppliers.Location = new System.Drawing.Point(3, 3);
             this.gridSuppliers.Name = "gridSuppliers";
             this.gridSuppliers.ReadOnly = true;
             this.gridSuppliers.Size = new System.Drawing.Size(744, 305);
             this.gridSuppliers.TabIndex = 0;
-            this.gridSuppliers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuppliers_CellEnter);
+            this.gridSuppliers.SelectionChanged += new System.EventHandler(this.gridSuppliers_SelectionChanged);
             // 
             // ucSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkNrSerie);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cbNumberSerie);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtPhone);
@@ -375,11 +377,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbNumberSerie;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.LinkLabel linkNrSerie;
 
     }
 }

@@ -51,29 +51,7 @@ namespace Koberce_2.Entities
 
         public static List<ProductEntity> LoadAll()
         {
-            var ret = new List<ProductEntity>();
-            var table = LoadAllValidData(DBProvider.T_PRODUCT);
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var toAdd = new ProductEntity();
-                toAdd.ParseFromRow(table.Rows[i]);
-
-                ret.Add(toAdd);
-            }
-
-            return ret;
-        }
-
-        public void Load(long id)
-        {
-            Clear();
-
-            var row = base.GetById(id);
-            if (row == null)
-                return;
-
-            ParseFromRow(row);
+            return BaseEntity<ProductEntity>.LoadAll(DBProvider.T_PRODUCT);
         }
 
         public void Save()

@@ -9,5 +9,8 @@ namespace Koberce_2
     interface IGridHolder
     {
         DoubleBufferedGrid GetDataGrid();
+        bool ContainsEntities(Type ofType);
+        bool FindEntity(long id);
+        UserControl GetControl();
     }
 }

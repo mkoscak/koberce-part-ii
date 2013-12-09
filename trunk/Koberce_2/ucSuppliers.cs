@@ -78,10 +78,8 @@ namespace Koberce_2
             current.Address2 = txtAddress2.Text;
             current.Phone = txtPhone.Text;
             current.Email = txtEmail.Text;
-            var ns = cbNumberSerie.SelectedItem as NumberSerieEntity;
-            if (ns != null)
-                current.NrSerieId = ns.Id;
-            else
+            GetCurrentNrSerie();
+            if (current.NrSerieId == -1)
                 throw new Exception("Number serie is mandatory item!");
 
             current.Comment = txtComment.Text;
@@ -127,14 +125,29 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void gridSuppliers_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void gridSuppliers_SelectionChanged(object sender, EventArgs e)
         {
             if (gridSuppliers.SelectedCells == null || gridSuppliers.SelectedCells.Count == 0)
                 current = SupplierEntity.Empty;
             else
-                current = gridSuppliers.Rows[e.RowIndex].DataBoundItem as SupplierEntity;
+                current = gridSuppliers.Rows[gridSuppliers.SelectedCells[0].RowIndex].DataBoundItem as SupplierEntity;
 
             ShowItem(current);
+        }
+
+        private void linkNrSerie_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GetCurrentNrSerie();
+            Common.PresenterInst.FindShowEntity(typeof(NumberSerieEntity), current.NrSerieId ?? -1);
+        }
+
+        private void GetCurrentNrSerie()
+        {
+            var se = cbNumberSerie.SelectedItem as NumberSerieEntity;
+            if (se != null)
+                current.NrSerieId = se.Id ?? -1;
+            else
+                current.NrSerieId = -1;
         }
 
         #region IGridHolder Members
@@ -142,6 +155,21 @@ namespace Koberce_2
         public DoubleBufferedGrid GetDataGrid()
         {
             return gridSuppliers;
+        }
+
+        public bool ContainsEntities(Type ofType)
+        {
+            return ofType == typeof(SupplierEntity);
+        }
+
+        public bool FindEntity(long id)
+        {
+            return Common.FindEntityInGrid<SupplierEntity>(GetDataGrid(), id);
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
         }
 
         #endregion

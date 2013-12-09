@@ -9,8 +9,8 @@ namespace Koberce_2.Entities
     /// <summary>
     /// Base DB entity with basic columns
     /// </summary>
-    abstract class BaseEntity<T>
-        where T : new()
+    public abstract class BaseEntity<T>
+        where T : BaseEntity<T>, new()
     {
         internal string TableName
         {
@@ -101,6 +101,21 @@ namespace Koberce_2.Entities
         }
 
         /// <summary>
+        /// Nacita a vyparsuje entitu podla skutocneho typu
+        /// </summary>
+        /// <param name="id"></param>
+        public void Load(long id)
+        {
+            Clear();
+
+            var row = GetById(id);
+            if (row == null)
+                return;
+
+            ParseFromRow(row);
+        }
+
+        /// <summary>
         /// Save the changes or insert new entity when Id is null
         /// </summary>
         /// <param name="columns"></param>
@@ -145,6 +160,22 @@ namespace Koberce_2.Entities
             Id = long.Parse(row[ID].ToString());
             Comment = row[COMMENT].ToString();
             Valid = row[VALID].ToString() != "0";
+        }
+
+        public static List<T> LoadAll(string tableName)
+        {
+            var ret = new List<T>();
+            var table = LoadAllValidData(tableName);
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                var toAdd = new T();
+                toAdd.ParseFromRow(table.Rows[i]);
+
+                ret.Add(toAdd);
+            }
+
+            return ret;
         }
     }
 }

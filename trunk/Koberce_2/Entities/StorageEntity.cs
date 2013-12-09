@@ -38,29 +38,7 @@ namespace Koberce_2.Entities
 
         public static List<StorageEntity> LoadAll()
         {
-            var ret = new List<StorageEntity>();
-            var table = LoadAllValidData(DBProvider.T_STORAGE);
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var toAdd = new StorageEntity();
-                toAdd.ParseFromRow(table.Rows[i]);
-
-                ret.Add(toAdd);
-            }
-
-            return ret;
-        }
-
-        public void Load(long id)
-        {
-            Clear();
-
-            var row = base.GetById(id);
-            if (row == null)
-                return;
-
-            ParseFromRow(row);
+            return BaseEntity<StorageEntity>.LoadAll(DBProvider.T_STORAGE);
         }
 
         public void Save()

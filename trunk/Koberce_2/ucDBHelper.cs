@@ -58,6 +58,21 @@ namespace Koberce_2
             return gridDBres;
         }
 
+        public bool ContainsEntities(Type ofType)
+        {
+            return false;
+        }
+
+        public bool FindEntity(long id)
+        {
+            return false;
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
+        }
+
         #endregion
     }
 }
