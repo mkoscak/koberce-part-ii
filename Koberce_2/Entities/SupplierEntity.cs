@@ -13,6 +13,7 @@ namespace Koberce_2.Entities
         public string Phone { get; set; }
         public string Email { get; set; }
         public long? NrSerieId { get; set; }
+        public NumberSerieEntity NumberSerie;
 
         static string NAME = "NAME";
         static string ADDRESS = "ADDRESS";
@@ -50,6 +51,13 @@ namespace Koberce_2.Entities
                 string.Format("{0},\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",{6},\"{7}\",{8}",
                 Common.NullableLong(Id), Name, Address, Address2, Phone, Email, Common.NullableLong(NrSerieId), Comment, Valid ? 1 : 0
                 ));
+        }
+
+        public override void Load(long id)
+        {
+            base.Load(id);
+            NumberSerie = new NumberSerieEntity();
+            NumberSerie.Load(NrSerieId ?? -1);
         }
 
         internal override void ParseFromRow(System.Data.DataRow row)

@@ -69,7 +69,7 @@ namespace Koberce_2
             txtMaterial.Text = ent.Material.ToString();
             txtMatInside.Text = ent.MaterialInside.ToString();
             txtForm.Text = ent.Form.ToString();
-            cbSuppliers.Text = ent.SupplierId.ToString();
+            cbSuppliers.Text = string.Empty;
             txtComment.Text = ent.Comment;
             var found = suppliers.Where(s => s.Id == ent.SupplierId).FirstOrDefault();
             if (found != null)
@@ -113,8 +113,8 @@ namespace Koberce_2
             current.Description = txtDescription.Text;
             current.Hochflor = long.Parse(txtHochflor.Text);
             current.Knots = long.Parse(txtKnots.Text);
-            current.Weight = double.Parse(txtWeight.Text);
-            current.BuyPrice = double.Parse(txtBuyPrice.Text);
+            current.Weight = Common.GetPrice(txtWeight.Text);
+            current.BuyPrice = Common.GetPrice(txtBuyPrice.Text);
             current.Color = txtColor.Text;
             current.Material = txtMaterial.Text;
             current.MaterialInside = txtMatInside.Text;
@@ -151,7 +151,31 @@ namespace Koberce_2
 
         private void SaveCurrent()
         {
-            LoadCurrent();
+            Save(false);
+        }
+
+        private void btnSaveNew_Click(object sender, EventArgs e)
+        {
+            Save(true);
+        }
+
+        private void Save(bool asNew)
+        {
+            try
+            {
+                LoadCurrent();
+
+                if (asNew)
+                {
+                    current.Id = null;
+                    current.ProductNr = GetNextProductNr(current.Supplier.NumberSerie);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Unable to load current product! " + ex, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             current.Save();
 
             MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -160,7 +184,15 @@ namespace Koberce_2
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            LoadCurrent();
+            try
+            {
+                LoadCurrent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Unable to load current product! "+ex, "Delete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             current.Delete();
 
             MessageBox.Show(this, "Delete successful!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -174,6 +206,9 @@ namespace Koberce_2
             else
                 current = gridProducts.Rows[gridProducts.SelectedCells[0].RowIndex].DataBoundItem as ProductEntity;
 
+            // znovunacitanie aktualnej kvoli pokracujucim entitam..
+            if (current.Id.HasValue)
+                current.Load(current.Id.Value);
             ShowItem(current);
         }
 
@@ -195,6 +230,35 @@ namespace Koberce_2
                 current.SupplierId = se.Id ?? -1;
             else
                 current.SupplierId = -1;
+        }
+
+        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // len pre nove produkty
+            if (current.Id != null)
+                return;
+
+            GetNewProdNumber();
+        }
+
+        private void GetNewProdNumber()
+        {
+            var sel = cbSuppliers.SelectedItem as SupplierEntity;
+            if (sel == null)
+            {
+                txtProductNr.Text = "no supplier!";
+                return;
+            }
+
+            txtProductNr.Text = GetNextProductNr(sel.NumberSerie);
+        }
+
+        private string GetNextProductNr(NumberSerieEntity nse)
+        {
+            if (nse == null)
+                return string.Empty;
+
+            return nse.Prefix + (nse.LastNr + 1).ToString();
         }
 
         #region IGridHolder Members

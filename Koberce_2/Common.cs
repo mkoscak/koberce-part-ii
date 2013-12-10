@@ -12,7 +12,7 @@ using Koberce_2.Entities;
 
 namespace Koberce_2
 {
-    class Common
+    public static class Common
     {
         public static IPresenter PresenterInst
         {
@@ -185,6 +185,16 @@ namespace Koberce_2
 			}
 
             return false;
+        }
+
+        /// <summary>
+        /// Extension metoda na konverziu double cisla na string pre DB operacie
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public static string ToDBString(this double num)
+        {
+            return num.ToString().Replace(',', '.');
         }
     }
 }
