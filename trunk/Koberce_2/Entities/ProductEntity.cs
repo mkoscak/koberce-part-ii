@@ -18,6 +18,7 @@ namespace Koberce_2.Entities
         public string MaterialInside { get; set; }
         public string Form { get; set; }
         public long SupplierId { get; set; }
+        public SupplierEntity Supplier;
 
         static string PRODUCT_NR = "PRODUCT_NR";
         static string DESCIPTION = "DESCIPTION";
@@ -54,11 +55,26 @@ namespace Koberce_2.Entities
             return BaseEntity<ProductEntity>.LoadAll(DBProvider.T_PRODUCT);
         }
 
+        public override void Load(long id)
+        {
+            base.Load(id);
+            Supplier = new SupplierEntity();
+            Supplier.Load(SupplierId);
+        }
+
         public void Save()
         {
+            // increment number serie number
+            SupplierEntity sup = new SupplierEntity();
+            sup.Load(SupplierId);
+            NumberSerieEntity nse = new NumberSerieEntity();
+            nse.Load(sup.NrSerieId.Value);
+            nse.LastNr++;
+            nse.Save();
+
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", ID, PRODUCT_NR, DESCIPTION, HOCHFLOR, KNOTS, WEIGHT, BUY_PRICE, COLOR, MATERIAL, MAT_INSIDE, FORM, SUPPLIER_ID, COMMENT, VALID),
                 string.Format("{0},\"{1}\",\"{2}\",{3},{4},{5},{6},\"{7}\",\"{8}\",\"{9}\",\"{10}\",{11},\"{12}\",{13}",
-                Common.NullableLong(Id), ProductNr, Description, Hochflor, Knots, Weight, BuyPrice, Color, Material, MaterialInside, Form, SupplierId, Comment, Valid ? 1 : 0
+                Common.NullableLong(Id), ProductNr, Description, Hochflor, Knots, Weight.ToDBString(), BuyPrice.ToDBString(), Color, Material, MaterialInside, Form, SupplierId, Comment, Valid ? 1 : 0
                 ));
         }
 
@@ -70,8 +86,8 @@ namespace Koberce_2.Entities
             Description = row[DESCIPTION].ToString();
             Hochflor = long.Parse(row[HOCHFLOR].ToString());
             Knots = long.Parse(row[KNOTS].ToString());
-            Weight = double.Parse(row[WEIGHT].ToString());
-            BuyPrice = double.Parse(row[BUY_PRICE].ToString());
+            Weight = Common.GetPrice(row[WEIGHT].ToString());
+            BuyPrice = Common.GetPrice(row[BUY_PRICE].ToString());
             Color = row[COLOR].ToString();
             Material = row[MATERIAL].ToString();
             MaterialInside = row[MAT_INSIDE].ToString();

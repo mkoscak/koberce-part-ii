@@ -104,7 +104,7 @@ namespace Koberce_2.Entities
         /// Nacita a vyparsuje entitu podla skutocneho typu
         /// </summary>
         /// <param name="id"></param>
-        public void Load(long id)
+        public virtual void Load(long id)
         {
             Clear();
 
