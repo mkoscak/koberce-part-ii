@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Koberce_2
+namespace Koberce_2.UCs
 {
     public partial class ucDBHelper : UserControl, IGridHolder
     {

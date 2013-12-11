@@ -20,7 +20,6 @@ namespace Koberce_2.Entities
         static string EMAIL = "EMAIL";
 
         public StorageEntity()
-            : base(DBProvider.T_STORAGE)
         {
             Clear();
         }
@@ -63,6 +62,11 @@ namespace Koberce_2.Entities
         public override string ToString()
         {
             return Name;
+        }
+
+        public override string GetTableName()
+        {
+            return DBProvider.T_STORAGE;
         }
     }
 }

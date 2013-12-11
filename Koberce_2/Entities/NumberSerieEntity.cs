@@ -20,7 +20,6 @@ namespace Koberce_2.Entities
         /// </summary>
         /// <param name="db"></param>
         public NumberSerieEntity()
-            : base(DBProvider.T_NUMBER_SERIE)
         {
             Clear();
         }
@@ -56,9 +55,19 @@ namespace Koberce_2.Entities
             LastNr = long.Parse(row[LAST_NR].ToString());
         }
 
+        public string NextCode()
+        {
+            return Prefix + (LastNr + 1);
+        }
+
         public override string ToString()
         {
             return Name;
+        }
+
+        public override string GetTableName()
+        {
+            return DBProvider.T_NUMBER_SERIE;
         }
     }
 }

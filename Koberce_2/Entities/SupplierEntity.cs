@@ -7,13 +7,42 @@ namespace Koberce_2.Entities
 {
     class SupplierEntity : BaseEntity<SupplierEntity>
     {
+        // viditelne polozky
         public string Name { get; set; }
         public string Address { get; set; }
         public string Address2 { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public long? NrSerieId { get; set; }
-        public NumberSerieEntity NumberSerie;
+        public string NumberSerie
+        {
+            get
+            {
+                if (NumberSerieEnt == null)
+                    return string.Empty;
+
+                return NumberSerieEnt.ToString();
+            }
+        }
+
+        // vnutorne struktury
+        private long? nrSerieId;
+        internal long? NrSerieId
+        {
+            get
+            {
+                return nrSerieId;
+            }
+
+            set
+            {
+                nrSerieId = value;
+                // nacitanie pokracujucich entit
+                NumberSerieEnt = new NumberSerieEntity();
+                NumberSerieEnt.Load(nrSerieId ?? -1);
+
+            }
+        }
+        internal NumberSerieEntity NumberSerieEnt;
 
         static string NAME = "NAME";
         static string ADDRESS = "ADDRESS";
@@ -23,7 +52,6 @@ namespace Koberce_2.Entities
         static string NR_SERIE_ID = "NR_SERIE_ID";
 
         public SupplierEntity()
-            : base(DBProvider.T_SUPPLIER)
         {
             Clear();
         }
@@ -53,13 +81,6 @@ namespace Koberce_2.Entities
                 ));
         }
 
-        public override void Load(long id)
-        {
-            base.Load(id);
-            NumberSerie = new NumberSerieEntity();
-            NumberSerie.Load(NrSerieId ?? -1);
-        }
-
         internal override void ParseFromRow(System.Data.DataRow row)
         {
             base.ParseFromRow(row);
@@ -75,6 +96,11 @@ namespace Koberce_2.Entities
         public override string ToString()
         {
             return Name;
+        }
+
+        public override string GetTableName()
+        {
+            return DBProvider.T_SUPPLIER;
         }
     }
 }

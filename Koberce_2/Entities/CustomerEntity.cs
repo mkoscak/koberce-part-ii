@@ -33,7 +33,6 @@ namespace Koberce_2.Entities
         static string CUSTOMER_TYPE = "CUSTOMER_TYPE";
 
         public CustomerEntity()
-            : base(DBProvider.T_CUSTOMER)
         {
             Clear();
         }
@@ -78,6 +77,11 @@ namespace Koberce_2.Entities
         public override string ToString()
         {
             return Name;
+        }
+
+        public override string GetTableName()
+        {
+            return DBProvider.T_CUSTOMER;
         }
     }
 }

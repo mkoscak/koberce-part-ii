@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolbarMain = new System.Windows.Forms.ToolStrip();
             this.btnToolExit = new System.Windows.Forms.ToolStripButton();
+            this.toolBack = new System.Windows.Forms.ToolStripButton();
+            this.toolNextTab = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolProducts = new System.Windows.Forms.ToolStripButton();
             this.toolSuppliers = new System.Windows.Forms.ToolStripButton();
             this.toolCustomers = new System.Windows.Forms.ToolStripButton();
@@ -45,9 +48,6 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolBack = new System.Windows.Forms.ToolStripButton();
-            this.toolNextTab = new System.Windows.Forms.ToolStripButton();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,31 @@
             this.btnToolExit.Size = new System.Drawing.Size(52, 52);
             this.btnToolExit.Text = "Exit application";
             this.btnToolExit.Click += new System.EventHandler(this.btnToolExit_Click);
+            // 
+            // toolBack
+            // 
+            this.toolBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBack.Image = ((System.Drawing.Image)(resources.GetObject("toolBack.Image")));
+            this.toolBack.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBack.Name = "toolBack";
+            this.toolBack.Size = new System.Drawing.Size(52, 52);
+            this.toolBack.Text = "Previous tab";
+            this.toolBack.Click += new System.EventHandler(this.toolBack_Click);
+            // 
+            // toolNextTab
+            // 
+            this.toolNextTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolNextTab.Image = ((System.Drawing.Image)(resources.GetObject("toolNextTab.Image")));
+            this.toolNextTab.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNextTab.Name = "toolNextTab";
+            this.toolNextTab.Size = new System.Drawing.Size(52, 52);
+            this.toolNextTab.Text = "Next tab";
+            this.toolNextTab.Click += new System.EventHandler(this.toolNextTab_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 55);
             // 
             // toolProducts
             // 
@@ -214,31 +239,6 @@
             this.statusLabel1.Size = new System.Drawing.Size(70, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 55);
-            // 
-            // toolBack
-            // 
-            this.toolBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolBack.Image = ((System.Drawing.Image)(resources.GetObject("toolBack.Image")));
-            this.toolBack.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBack.Name = "toolBack";
-            this.toolBack.Size = new System.Drawing.Size(52, 52);
-            this.toolBack.Text = "Previous tab";
-            this.toolBack.Click += new System.EventHandler(this.toolBack_Click);
-            // 
-            // toolNextTab
-            // 
-            this.toolNextTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolNextTab.Image = ((System.Drawing.Image)(resources.GetObject("toolNextTab.Image")));
-            this.toolNextTab.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolNextTab.Name = "toolNextTab";
-            this.toolNextTab.Size = new System.Drawing.Size(52, 52);
-            this.toolNextTab.Text = "Next tab";
-            this.toolNextTab.Click += new System.EventHandler(this.toolNextTab_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,7 +252,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.3.9";
+            this.Text = "Global - part II - v0.4.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);

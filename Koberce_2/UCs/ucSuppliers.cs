@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
 
-namespace Koberce_2
+namespace Koberce_2.UCs
 {
     public partial class ucSuppliers : UserControl, IGridHolder
     {
@@ -38,6 +38,7 @@ namespace Koberce_2
             gridSuppliers.DataSource = null;
             var data = SupplierEntity.LoadAll();
             gridSuppliers.DataSource = data;
+            Common.PresenterInst.ShowStatus(data.Count.ToString() + " suppliers loaded!");
         }
 
         private void ReloadNumSeries()
@@ -97,23 +98,38 @@ namespace Koberce_2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Save(false);
+        }
+
+        private void btnSaveNew_Click(object sender, EventArgs e)
+        {
+            Save(true);
+        }
+
+        private void Save(bool asNew)
+        {
             try
             {
-                SaveCurrent();
+                LoadCurrent();
+
+                if (asNew)
+                    current.Id = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Unable to load current product! " + ex, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                current.Save();
+                MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ReloadAllData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Save unsuccessful: " + ex.Message, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void SaveCurrent()
-        {
-            LoadCurrent();
-            current.Save();
-
-            MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ReloadAllData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

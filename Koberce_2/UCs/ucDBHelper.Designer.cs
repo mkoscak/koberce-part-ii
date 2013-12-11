@@ -1,4 +1,4 @@
-﻿namespace Koberce_2
+﻿namespace Koberce_2.UCs
 {
     partial class ucDBHelper
     {
@@ -74,6 +74,7 @@
             // 
             // btnClear
             // 
+            this.btnClear.ForeColor = System.Drawing.Color.Red;
             this.btnClear.Location = new System.Drawing.Point(3, 244);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(125, 31);
@@ -84,6 +85,7 @@
             // 
             // btnExecNonQuery
             // 
+            this.btnExecNonQuery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExecNonQuery.Location = new System.Drawing.Point(3, 42);
             this.btnExecNonQuery.Name = "btnExecNonQuery";
             this.btnExecNonQuery.Size = new System.Drawing.Size(125, 33);
@@ -94,6 +96,7 @@
             // 
             // btnExecQuery
             // 
+            this.btnExecQuery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExecQuery.Location = new System.Drawing.Point(3, 3);
             this.btnExecQuery.Name = "btnExecQuery";
             this.btnExecQuery.Size = new System.Drawing.Size(125, 33);
@@ -134,6 +137,7 @@
             this.gridDBres.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridDBres.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridDBres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDBres.Location = new System.Drawing.Point(3, 291);
             this.gridDBres.Name = "gridDBres";
