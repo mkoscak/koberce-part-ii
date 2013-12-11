@@ -1,4 +1,4 @@
-﻿namespace Koberce_2
+﻿namespace Koberce_2.UCs
 {
     partial class ucProducts
     {
@@ -61,13 +61,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtForm = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.groupPreview = new System.Windows.Forms.GroupBox();
             this.picPreview = new System.Windows.Forms.PictureBox();
             this.linkSupplier = new System.Windows.Forms.LinkLabel();
-            this.gridProducts = new Koberce_2.DoubleBufferedGrid();
             this.btnSaveNew = new System.Windows.Forms.Button();
-            this.groupPreview.SuspendLayout();
+            this.tabDetails = new System.Windows.Forms.TabControl();
+            this.tabStorages = new System.Windows.Forms.TabPage();
+            this.tabPreview = new System.Windows.Forms.TabPage();
+            this.btnRotatePreview = new System.Windows.Forms.Button();
+            this.gridProducts = new Koberce_2.DoubleBufferedGrid();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
+            this.tabDetails.SuspendLayout();
+            this.tabPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +88,8 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(205, 358);
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(177, 349);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 23;
@@ -94,7 +99,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(124, 358);
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSave.Location = new System.Drawing.Point(96, 378);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 22;
@@ -104,7 +110,8 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(43, 358);
+            this.btnNew.ForeColor = System.Drawing.Color.Green;
+            this.btnNew.Location = new System.Drawing.Point(96, 349);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 21;
@@ -132,6 +139,7 @@
             // 
             // txtProductNr
             // 
+            this.txtProductNr.Enabled = false;
             this.txtProductNr.ForeColor = System.Drawing.Color.Maroon;
             this.txtProductNr.Location = new System.Drawing.Point(96, 33);
             this.txtProductNr.Name = "txtProductNr";
@@ -255,7 +263,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(3, 583);
+            this.label9.Location = new System.Drawing.Point(154, 8);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 35;
@@ -373,26 +381,14 @@
             this.label16.TabIndex = 46;
             this.label16.Text = "Form";
             // 
-            // groupPreview
-            // 
-            this.groupPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupPreview.Controls.Add(this.picPreview);
-            this.groupPreview.Location = new System.Drawing.Point(3, 416);
-            this.groupPreview.Name = "groupPreview";
-            this.groupPreview.Size = new System.Drawing.Size(296, 163);
-            this.groupPreview.TabIndex = 48;
-            this.groupPreview.TabStop = false;
-            this.groupPreview.Text = "Product preview";
-            // 
             // picPreview
             // 
             this.picPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.picPreview.Location = new System.Drawing.Point(8, 19);
+            this.picPreview.Location = new System.Drawing.Point(1, 0);
             this.picPreview.Name = "picPreview";
-            this.picPreview.Size = new System.Drawing.Size(282, 138);
+            this.picPreview.Size = new System.Drawing.Size(284, 163);
             this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPreview.TabIndex = 0;
             this.picPreview.TabStop = false;
@@ -408,6 +404,63 @@
             this.linkSupplier.TabStop = true;
             this.linkSupplier.Text = "Supplier";
             this.linkSupplier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSupplier_LinkClicked);
+            // 
+            // btnSaveNew
+            // 
+            this.btnSaveNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSaveNew.Location = new System.Drawing.Point(177, 378);
+            this.btnSaveNew.Name = "btnSaveNew";
+            this.btnSaveNew.Size = new System.Drawing.Size(103, 23);
+            this.btnSaveNew.TabIndex = 50;
+            this.btnSaveNew.Text = "Save as &new";
+            this.btnSaveNew.UseVisualStyleBackColor = true;
+            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
+            // 
+            // tabDetails
+            // 
+            this.tabDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabDetails.Controls.Add(this.tabStorages);
+            this.tabDetails.Controls.Add(this.tabPreview);
+            this.tabDetails.Location = new System.Drawing.Point(6, 407);
+            this.tabDetails.Name = "tabDetails";
+            this.tabDetails.SelectedIndex = 0;
+            this.tabDetails.Size = new System.Drawing.Size(293, 189);
+            this.tabDetails.TabIndex = 51;
+            // 
+            // tabStorages
+            // 
+            this.tabStorages.Location = new System.Drawing.Point(4, 22);
+            this.tabStorages.Name = "tabStorages";
+            this.tabStorages.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStorages.Size = new System.Drawing.Size(285, 163);
+            this.tabStorages.TabIndex = 0;
+            this.tabStorages.Text = "Storages";
+            this.tabStorages.UseVisualStyleBackColor = true;
+            // 
+            // tabPreview
+            // 
+            this.tabPreview.Controls.Add(this.btnRotatePreview);
+            this.tabPreview.Controls.Add(this.picPreview);
+            this.tabPreview.Location = new System.Drawing.Point(4, 22);
+            this.tabPreview.Name = "tabPreview";
+            this.tabPreview.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPreview.Size = new System.Drawing.Size(285, 163);
+            this.tabPreview.TabIndex = 1;
+            this.tabPreview.Text = "Product preview";
+            this.tabPreview.UseVisualStyleBackColor = true;
+            // 
+            // btnRotatePreview
+            // 
+            this.btnRotatePreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRotatePreview.Image = global::Koberce_2.Properties.Resources.reload_tiny;
+            this.btnRotatePreview.Location = new System.Drawing.Point(256, 6);
+            this.btnRotatePreview.Name = "btnRotatePreview";
+            this.btnRotatePreview.Size = new System.Drawing.Size(23, 23);
+            this.btnRotatePreview.TabIndex = 25;
+            this.btnRotatePreview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRotatePreview.UseVisualStyleBackColor = true;
+            this.btnRotatePreview.Click += new System.EventHandler(this.btnRotatePreview_Click);
             // 
             // gridProducts
             // 
@@ -428,23 +481,13 @@
             this.gridProducts.TabIndex = 0;
             this.gridProducts.SelectionChanged += new System.EventHandler(this.gridProducts_SelectionChanged);
             // 
-            // btnSaveNew
-            // 
-            this.btnSaveNew.Location = new System.Drawing.Point(114, 387);
-            this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(97, 23);
-            this.btnSaveNew.TabIndex = 50;
-            this.btnSaveNew.Text = "Save as &new";
-            this.btnSaveNew.UseVisualStyleBackColor = true;
-            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
-            // 
             // ucProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tabDetails);
             this.Controls.Add(this.btnSaveNew);
             this.Controls.Add(this.linkSupplier);
-            this.Controls.Add(this.groupPreview);
             this.Controls.Add(this.txtForm);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtMatInside);
@@ -480,8 +523,9 @@
             this.Controls.Add(this.gridProducts);
             this.Name = "ucProducts";
             this.Size = new System.Drawing.Size(750, 599);
-            this.groupPreview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
+            this.tabDetails.ResumeLayout(false);
+            this.tabPreview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -523,10 +567,13 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtForm;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupPreview;
         private System.Windows.Forms.PictureBox picPreview;
         private System.Windows.Forms.LinkLabel linkSupplier;
         private System.Windows.Forms.Button btnSaveNew;
+        private System.Windows.Forms.TabControl tabDetails;
+        private System.Windows.Forms.TabPage tabStorages;
+        private System.Windows.Forms.TabPage tabPreview;
+        private System.Windows.Forms.Button btnRotatePreview;
 
     }
 }

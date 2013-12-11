@@ -17,8 +17,33 @@ namespace Koberce_2.Entities
         public string Material { get; set; }
         public string MaterialInside { get; set; }
         public string Form { get; set; }
-        public long SupplierId { get; set; }
-        public SupplierEntity Supplier;
+        public string Supplier
+        {
+            get
+            {
+                if (SupplierEnt == null)
+                    return string.Empty;
+
+                return SupplierEnt.ToString();
+            }
+        }
+
+        private long supplierId;
+        internal long SupplierId
+        {
+            get
+            {
+                return supplierId;
+            }
+
+            set
+            {
+                supplierId = value;
+                SupplierEnt = new SupplierEntity();
+                SupplierEnt.Load(supplierId);
+            }
+        }
+        public SupplierEntity SupplierEnt;
 
         static string PRODUCT_NR = "PRODUCT_NR";
         static string DESCIPTION = "DESCIPTION";
@@ -33,7 +58,6 @@ namespace Koberce_2.Entities
         static string SUPPLIER_ID = "SUPPLIER_ID";
 
         public ProductEntity()
-            : base(DBProvider.T_PRODUCT)
         {
             Clear();
         }
@@ -55,22 +79,15 @@ namespace Koberce_2.Entities
             return BaseEntity<ProductEntity>.LoadAll(DBProvider.T_PRODUCT);
         }
 
-        public override void Load(long id)
-        {
-            base.Load(id);
-            Supplier = new SupplierEntity();
-            Supplier.Load(SupplierId);
-        }
-
         public void Save()
         {
-            // increment number serie number
-            SupplierEntity sup = new SupplierEntity();
-            sup.Load(SupplierId);
-            NumberSerieEntity nse = new NumberSerieEntity();
-            nse.Load(sup.NrSerieId.Value);
-            nse.LastNr++;
-            nse.Save();
+            if (!Id.HasValue)
+            {
+                ProductNr = SupplierEnt.NumberSerieEnt.NextCode();
+                // increment number serie number and save
+                SupplierEnt.NumberSerieEnt.LastNr++;
+                SupplierEnt.NumberSerieEnt.Save();
+            }
 
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", ID, PRODUCT_NR, DESCIPTION, HOCHFLOR, KNOTS, WEIGHT, BUY_PRICE, COLOR, MATERIAL, MAT_INSIDE, FORM, SUPPLIER_ID, COMMENT, VALID),
                 string.Format("{0},\"{1}\",\"{2}\",{3},{4},{5},{6},\"{7}\",\"{8}\",\"{9}\",\"{10}\",{11},\"{12}\",{13}",
@@ -93,12 +110,16 @@ namespace Koberce_2.Entities
             MaterialInside = row[MAT_INSIDE].ToString();
             Form = row[FORM].ToString();
             SupplierId = long.Parse(row[SUPPLIER_ID].ToString());
-
         }
 
         public override string ToString()
         {
             return ProductNr + " " + Description;
+        }
+
+        public override string GetTableName()
+        {
+            return DBProvider.T_PRODUCT;
         }
     }
 }

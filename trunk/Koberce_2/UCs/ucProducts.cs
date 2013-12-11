@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
 
-namespace Koberce_2
+namespace Koberce_2.UCs
 {
     public partial class ucProducts : UserControl, IGridHolder
     {
@@ -25,8 +25,9 @@ namespace Koberce_2
             {
                 ReloadAllData();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Common.PresenterInst.ShowStatus(ex.ToString());
             }
             NewItem();
         }
@@ -38,7 +39,6 @@ namespace Koberce_2
             gridProducts.DataSource = null;
             var data = ProductEntity.LoadAll();
             gridProducts.DataSource = data;
-
             Common.PresenterInst.ShowStatus(data.Count.ToString() + " products loaded!");
         }
 
@@ -71,14 +71,12 @@ namespace Koberce_2
             txtForm.Text = ent.Form.ToString();
             cbSuppliers.Text = string.Empty;
             txtComment.Text = ent.Comment;
-            var found = suppliers.Where(s => s.Id == ent.SupplierId).FirstOrDefault();
-            if (found != null)
+            if (ent.SupplierEnt != null && ent.SupplierEnt.NumberSerieEnt != null)
             {
-                cbSuppliers.Text = found.ToString();
+                cbSuppliers.Text = ent.SupplierEnt.ToString();
                 // preview image
-                NumberSerieEntity nse = new NumberSerieEntity();
-                nse.Load(found.NrSerieId ?? -1);
-                picPreview.Image = Common.LoadImageFromStore(nse.Prefix + "-1.jpg");
+                manualRotation = false;
+                picPreview.Image = Common.LoadImageFromStore(ent.SupplierEnt.NumberSerieEnt.Prefix + "-1.jpg");
                 RotatePreviewIfNeeded();
             }
 
@@ -90,7 +88,7 @@ namespace Koberce_2
         /// </summary>
         private void RotatePreviewIfNeeded()
         {
-            if (picPreview.Image == null)
+            if (picPreview.Image == null || manualRotation)
                 return;
 
             bool windowHorizontal = picPreview.Width > picPreview.Height;
@@ -139,18 +137,6 @@ namespace Koberce_2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SaveCurrent();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, "Save unsuccessful: " + ex.Message, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void SaveCurrent()
-        {
             Save(false);
         }
 
@@ -166,20 +152,23 @@ namespace Koberce_2
                 LoadCurrent();
 
                 if (asNew)
-                {
                     current.Id = null;
-                    current.ProductNr = GetNextProductNr(current.Supplier.NumberSerie);
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Unable to load current product! " + ex, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            current.Save();
-
-            MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ReloadAllData();
+            try
+            {
+                current.Save();
+                MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ReloadAllData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Save unsuccessful: " + ex.Message, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -206,9 +195,6 @@ namespace Koberce_2
             else
                 current = gridProducts.Rows[gridProducts.SelectedCells[0].RowIndex].DataBoundItem as ProductEntity;
 
-            // znovunacitanie aktualnej kvoli pokracujucim entitam..
-            if (current.Id.HasValue)
-                current.Load(current.Id.Value);
             ShowItem(current);
         }
 
@@ -238,27 +224,21 @@ namespace Koberce_2
             if (current.Id != null)
                 return;
 
-            GetNewProdNumber();
-        }
-
-        private void GetNewProdNumber()
-        {
             var sel = cbSuppliers.SelectedItem as SupplierEntity;
-            if (sel == null)
-            {
-                txtProductNr.Text = "no supplier!";
-                return;
-            }
-
-            txtProductNr.Text = GetNextProductNr(sel.NumberSerie);
+            txtProductNr.Text = string.Empty;
+            if (sel != null)
+                txtProductNr.Text = sel.NumberSerieEnt.NextCode();
         }
 
-        private string GetNextProductNr(NumberSerieEntity nse)
+        bool manualRotation;
+        private void btnRotatePreview_Click(object sender, EventArgs e)
         {
-            if (nse == null)
-                return string.Empty;
+            if (picPreview == null || picPreview.Image == null)
+                return;
 
-            return nse.Prefix + (nse.LastNr + 1).ToString();
+            manualRotation = true;
+            picPreview.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            picPreview.Invalidate();
         }
 
         #region IGridHolder Members

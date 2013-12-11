@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
 
-namespace Koberce_2
+namespace Koberce_2.UCs
 {
     public partial class ucNumberSeries : UserControl, IGridHolder
     {
@@ -36,6 +36,7 @@ namespace Koberce_2
             gridSeries.DataSource = null;
             var data = NumberSerieEntity.LoadAll();
             gridSeries.DataSource = data;
+            Common.PresenterInst.ShowStatus(data.Count.ToString() + " number series loaded!");
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -84,11 +85,38 @@ namespace Koberce_2
 
         private void SaveCurrent()
         {
-            LoadCurrent();
-            current.Save();
+            Save(false);
+        }
 
-            MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ReloadAllData();
+        private void btnSaveNew_Click(object sender, EventArgs e)
+        {
+            Save(true);
+        }
+
+        private void Save(bool asNew)
+        {
+            try
+            {
+                LoadCurrent();
+
+                if (asNew)
+                    current.Id = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Unable to load current product! " + ex, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                current.Save();
+                MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ReloadAllData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Save unsuccessful: " + ex.Message, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

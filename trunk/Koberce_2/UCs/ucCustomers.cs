@@ -8,13 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
 
-namespace Koberce_2
+namespace Koberce_2.UCs
 {
-    public partial class ucStorages : UserControl, IGridHolder
+    public partial class ucCustomers : UserControl, IGridHolder
     {
-        StorageEntity current;
 
-        public ucStorages()
+        CustomerEntity current;
+
+        public ucCustomers()
         {
             InitializeComponent();
 
@@ -32,18 +33,27 @@ namespace Koberce_2
 
         private void ReloadAllData()
         {
-            gridStorages.DataSource = null;
-            var data = StorageEntity.LoadAll();
-            gridStorages.DataSource = data;
+            ReloadCustomerTypes();
+
+            gridCustomers.DataSource = null;
+            var data = CustomerEntity.LoadAll();
+            gridCustomers.DataSource = data;
+            Common.PresenterInst.ShowStatus(data.Count.ToString() + " customers loaded!");
+        }
+
+        private void ReloadCustomerTypes()
+        {
+            cbCustomerTypes.DataSource = null;
+            cbCustomerTypes.DataSource = CustomerEntity.CustomerTypes;
         }
 
         private void NewItem()
         {
-            current = StorageEntity.Empty;
+            current = CustomerEntity.Empty;
             ShowItem(current);
         }
 
-        private void ShowItem(StorageEntity ent)
+        private void ShowItem(CustomerEntity ent)
         {
             lblId.Text = ent.Id.HasValue ? ent.Id.Value.ToString() : string.Empty;
             txtName.Text = ent.Name;
@@ -51,6 +61,8 @@ namespace Koberce_2
             txtAddress2.Text = ent.Address2;
             txtPhone.Text = ent.Phone;
             txtEmail.Text = ent.Email;
+            if (cbCustomerTypes.Items.Count > 0)
+                cbCustomerTypes.SelectedIndex = (int)(ent.DCustomerType ?? 0);
             txtComment.Text = ent.Comment;
         }
 
@@ -65,6 +77,11 @@ namespace Koberce_2
             current.Address2 = txtAddress2.Text;
             current.Phone = txtPhone.Text;
             current.Email = txtEmail.Text;
+            var ns = cbCustomerTypes.SelectedItem as CodeList;
+            if (ns != null)
+                current.DCustomerType = ns.id;
+            else
+                throw new Exception("Customer type is mandatory item!");
 
             current.Comment = txtComment.Text;
         }
@@ -81,23 +98,38 @@ namespace Koberce_2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Save(false);
+        }
+
+        private void btnSaveNew_Click(object sender, EventArgs e)
+        {
+            Save(true);
+        }
+
+        private void Save(bool asNew)
+        {
             try
             {
-                SaveCurrent();
+                LoadCurrent();
+
+                if (asNew)
+                    current.Id = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Unable to load current customer! " + ex, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                current.Save();
+                MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ReloadAllData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Save unsuccessful: " + ex.Message, "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void SaveCurrent()
-        {
-            LoadCurrent();
-            current.Save();
-
-            MessageBox.Show(this, "Save successful!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ReloadAllData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -109,12 +141,12 @@ namespace Koberce_2
             ReloadAllData();
         }
 
-        private void gridStorages_SelectionChanged(object sender, EventArgs e)
+        private void gridCustomers_SelectionChanged(object sender, EventArgs e)
         {
-            if (gridStorages.SelectedCells == null || gridStorages.SelectedCells.Count == 0)
-                current = StorageEntity.Empty;
+            if (gridCustomers.SelectedCells == null || gridCustomers.SelectedCells.Count == 0)
+                current = CustomerEntity.Empty;
             else
-                current = gridStorages.Rows[gridStorages.SelectedCells[0].RowIndex].DataBoundItem as StorageEntity;
+                current = gridCustomers.Rows[gridCustomers.SelectedCells[0].RowIndex].DataBoundItem as CustomerEntity;
 
             ShowItem(current);
         }
@@ -123,17 +155,17 @@ namespace Koberce_2
 
         public DoubleBufferedGrid GetDataGrid()
         {
-            return gridStorages;
+            return gridCustomers;
         }
 
         public bool ContainsEntities(Type ofType)
         {
-            return ofType == typeof(StorageEntity);
+            return ofType == typeof(CustomerEntity);
         }
 
         public bool FindEntity(long id)
         {
-            return Common.FindEntityInGrid<StorageEntity>(GetDataGrid(), id);
+            return Common.FindEntityInGrid<CustomerEntity>(GetDataGrid(), id);
         }
 
         public UserControl GetControl()

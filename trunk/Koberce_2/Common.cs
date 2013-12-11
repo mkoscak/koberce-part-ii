@@ -121,6 +121,7 @@ namespace Koberce_2
                 ws.Cells[1, col].Style.Font.Bold = true;
                 ws.Cells[1, col].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells[1, col].Style.Fill.BackgroundColor.SetColor(Color.GreenYellow);
+                ws.Cells[1, col].Style.Border.BorderAround(ExcelBorderStyle.Medium, Color.DarkGray);
                 ws.Column(col).Width = 17;
 
                 var row = 2;
@@ -142,6 +143,10 @@ namespace Koberce_2
                         ws.Cells[row, col].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         ws.Cells[row, col].Style.Fill.BackgroundColor.SetColor(Color.LemonChiffon);
                     }
+                    ws.Cells[row, col].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    ws.Cells[row, col].Style.Border.Left.Color.SetColor(Color.DarkGray);
+                    ws.Cells[row, col].Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                    ws.Cells[row, col].Style.Border.Right.Color.SetColor(Color.DarkGray);
 
                     row++;
                 }

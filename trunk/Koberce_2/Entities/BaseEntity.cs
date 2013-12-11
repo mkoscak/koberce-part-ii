@@ -9,18 +9,12 @@ namespace Koberce_2.Entities
     /// <summary>
     /// Base DB entity with basic columns
     /// </summary>
-    public abstract class BaseEntity<T>
+    public abstract class BaseEntity<T> : IEntity
         where T : BaseEntity<T>, new()
     {
-        internal string TableName
-        {
-            get;
-            private set;
-        }
-
         // column variables for mapping
-        public long? Id { get; set; }
         public string Comment { get; set; }
+        public long? Id { get; set; }
         // internal because of invisibility in grids
         internal bool Valid { get; set; }
 
@@ -32,10 +26,8 @@ namespace Koberce_2.Entities
         /// <summary>
         /// Constructor with table name of the entity..
         /// </summary>
-        /// <param name="tableName"></param>
-        public BaseEntity(string tableName)
+        public BaseEntity()
         {
-            this.TableName = tableName;
             Clear();
         }
 
@@ -64,7 +56,7 @@ namespace Koberce_2.Entities
         /// Loads all data from table where VALID = 1
         /// </summary>
         /// <returns></returns>
-        public static DataTable LoadAllValidData(string tableName)
+        public static DataTable LoadAllValid_DT(string tableName)
         {
             var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where {1} = {2}", tableName, VALID, 1));
             if (ds == null || ds.Tables == null || ds.Tables.Count == 0)
@@ -77,13 +69,54 @@ namespace Koberce_2.Entities
         /// Loads all data from the entity table
         /// </summary>
         /// <returns></returns>
-        public static DataTable LoadAllData(string tableName)
+        public static DataTable LoadAll_DT(string tableName)
         {
             var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0}", tableName));
             if (ds == null || ds.Tables == null || ds.Tables.Count == 0)
                 return new DataTable();
 
             return ds.Tables[0];
+        }
+
+        public static List<T> LoadAll(string tableName)
+        {
+            var ret = new List<T>();
+            var table = LoadAllValid_DT(tableName);
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                var toAdd = new T();
+                toAdd.ParseFromRow(table.Rows[i]);
+
+                ret.Add(toAdd);
+            }
+
+            return ret;
+        }
+
+        public static DataTable LoadDataTable(string tableName, string where, string order)
+        {
+            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where {1} {2}", tableName, where, order ?? string.Empty));
+            if (ds == null || ds.Tables == null || ds.Tables.Count == 0)
+                return new DataTable();
+
+            return ds.Tables[0];
+        }
+
+        public static List<T> Load(string tableName, string where, string order)
+        {
+            var ret = new List<T>();
+            var table = LoadDataTable(tableName, where, order);
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                var toAdd = new T();
+                toAdd.ParseFromRow(table.Rows[i]);
+
+                ret.Add(toAdd);
+            }
+
+            return ret;
         }
 
         /// <summary>
@@ -93,7 +126,7 @@ namespace Koberce_2.Entities
         /// <returns></returns>
         public DataRow GetById(long id)
         {
-            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where id = {1}", TableName, id));
+            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where id = {1}", GetTableName(), id));
             if (ds == null || ds.Tables == null || ds.Tables.Count == 0 || ds.Tables[0].Rows == null || ds.Tables[0].Rows.Count == 0)
                 return null;
 
@@ -107,6 +140,9 @@ namespace Koberce_2.Entities
         public virtual void Load(long id)
         {
             Clear();
+
+            if (id < 0)
+                return;
 
             var row = GetById(id);
             if (row == null)
@@ -123,7 +159,7 @@ namespace Koberce_2.Entities
         public void Save(string columns, string values)
         {
             DBProvider.Instance.ExecuteNonQuery(string.Format("insert or replace into {0} ( {1} ) values ( {2} )",
-                TableName,
+                GetTableName(),
                 columns,
                 values
                 ));
@@ -136,7 +172,7 @@ namespace Koberce_2.Entities
         public virtual void Update(string what)
         {
             DBProvider.Instance.ExecuteNonQuery(string.Format("update {0} set {1} where {2} = {3}",
-                TableName,
+                GetTableName(),
                 what,
                 ID, Id
                 ));
@@ -162,20 +198,10 @@ namespace Koberce_2.Entities
             Valid = row[VALID].ToString() != "0";
         }
 
-        public static List<T> LoadAll(string tableName)
-        {
-            var ret = new List<T>();
-            var table = LoadAllValidData(tableName);
+        #region IEntity Members
 
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var toAdd = new T();
-                toAdd.ParseFromRow(table.Rows[i]);
+        public abstract string GetTableName();
 
-                ret.Add(toAdd);
-            }
-
-            return ret;
-        }
+        #endregion
     }
 }

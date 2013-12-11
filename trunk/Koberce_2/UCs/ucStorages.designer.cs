@@ -1,4 +1,4 @@
-﻿namespace Koberce_2
+﻿namespace Koberce_2.UCs
 {
     partial class ucStorages
     {
@@ -50,6 +50,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.gridStorages = new Koberce_2.DoubleBufferedGrid();
+            this.btnSaveNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridStorages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             this.btnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReload.Image = global::Koberce_2.Properties.Resources.reload_tiny;
-            this.btnReload.Location = new System.Drawing.Point(257, 346);
+            this.btnReload.Location = new System.Drawing.Point(256, 333);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(23, 23);
             this.btnReload.TabIndex = 24;
@@ -68,7 +69,8 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(205, 548);
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(176, 519);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 23;
@@ -79,7 +81,8 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(124, 548);
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSave.Location = new System.Drawing.Point(95, 548);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 22;
@@ -90,7 +93,8 @@
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNew.Location = new System.Drawing.Point(43, 548);
+            this.btnNew.ForeColor = System.Drawing.Color.Green;
+            this.btnNew.Location = new System.Drawing.Point(95, 519);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 21;
@@ -102,7 +106,7 @@
             // 
             this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtComment.ForeColor = System.Drawing.Color.Maroon;
-            this.txtComment.Location = new System.Drawing.Point(96, 506);
+            this.txtComment.Location = new System.Drawing.Point(95, 493);
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(184, 20);
             this.txtComment.TabIndex = 20;
@@ -112,7 +116,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label5.Location = new System.Drawing.Point(39, 509);
+            this.label5.Location = new System.Drawing.Point(38, 496);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 19;
@@ -122,7 +126,7 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtName.ForeColor = System.Drawing.Color.Maroon;
-            this.txtName.Location = new System.Drawing.Point(96, 376);
+            this.txtName.Location = new System.Drawing.Point(95, 363);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(184, 20);
             this.txtName.TabIndex = 18;
@@ -132,7 +136,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(55, 379);
+            this.label2.Location = new System.Drawing.Point(54, 366);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 17;
@@ -143,7 +147,7 @@
             this.lblId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblId.AutoSize = true;
             this.lblId.ForeColor = System.Drawing.Color.Maroon;
-            this.lblId.Location = new System.Drawing.Point(93, 351);
+            this.lblId.Location = new System.Drawing.Point(92, 338);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(13, 13);
             this.lblId.TabIndex = 16;
@@ -154,7 +158,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(74, 351);
+            this.label1.Location = new System.Drawing.Point(73, 338);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 15;
@@ -164,7 +168,7 @@
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtAddress.ForeColor = System.Drawing.Color.Maroon;
-            this.txtAddress.Location = new System.Drawing.Point(96, 402);
+            this.txtAddress.Location = new System.Drawing.Point(95, 389);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(184, 20);
             this.txtAddress.TabIndex = 26;
@@ -174,7 +178,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(45, 405);
+            this.label3.Location = new System.Drawing.Point(44, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 25;
@@ -184,7 +188,7 @@
             // 
             this.txtAddress2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtAddress2.ForeColor = System.Drawing.Color.Maroon;
-            this.txtAddress2.Location = new System.Drawing.Point(96, 428);
+            this.txtAddress2.Location = new System.Drawing.Point(95, 415);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(184, 20);
             this.txtAddress2.TabIndex = 28;
@@ -194,7 +198,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label4.Location = new System.Drawing.Point(39, 431);
+            this.label4.Location = new System.Drawing.Point(38, 418);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 27;
@@ -204,7 +208,7 @@
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPhone.ForeColor = System.Drawing.Color.Maroon;
-            this.txtPhone.Location = new System.Drawing.Point(96, 454);
+            this.txtPhone.Location = new System.Drawing.Point(95, 441);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(184, 20);
             this.txtPhone.TabIndex = 30;
@@ -214,7 +218,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label6.Location = new System.Drawing.Point(52, 457);
+            this.label6.Location = new System.Drawing.Point(51, 444);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 29;
@@ -224,7 +228,7 @@
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtEmail.ForeColor = System.Drawing.Color.Maroon;
-            this.txtEmail.Location = new System.Drawing.Point(96, 480);
+            this.txtEmail.Location = new System.Drawing.Point(95, 467);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(184, 20);
             this.txtEmail.TabIndex = 32;
@@ -234,7 +238,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label7.Location = new System.Drawing.Point(55, 483);
+            this.label7.Location = new System.Drawing.Point(54, 470);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 31;
@@ -257,7 +261,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(286, 379);
+            this.label10.Location = new System.Drawing.Point(285, 366);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(13, 16);
             this.label10.TabIndex = 36;
@@ -278,14 +282,27 @@
             this.gridStorages.Location = new System.Drawing.Point(3, 3);
             this.gridStorages.Name = "gridStorages";
             this.gridStorages.ReadOnly = true;
-            this.gridStorages.Size = new System.Drawing.Size(744, 337);
+            this.gridStorages.Size = new System.Drawing.Size(744, 324);
             this.gridStorages.TabIndex = 0;
             this.gridStorages.SelectionChanged += new System.EventHandler(this.gridStorages_SelectionChanged);
+            // 
+            // btnSaveNew
+            // 
+            this.btnSaveNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSaveNew.Location = new System.Drawing.Point(176, 548);
+            this.btnSaveNew.Name = "btnSaveNew";
+            this.btnSaveNew.Size = new System.Drawing.Size(103, 23);
+            this.btnSaveNew.TabIndex = 37;
+            this.btnSaveNew.Text = "Save as &new";
+            this.btnSaveNew.UseVisualStyleBackColor = true;
+            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
             // 
             // ucStorages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSaveNew);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEmail);
@@ -338,6 +355,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSaveNew;
 
     }
 }
