@@ -252,7 +252,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.4.0";
+            this.Text = "Global - part II - v0.5.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
