@@ -27,6 +27,7 @@ namespace Koberce_2
             TabAddNew("Suppliers", new ucSuppliers());
             TabAddNew("Customers", new ucCustomers());
             TabAddNew("Storages", new ucStorages());
+            TabAddNew("Storage states", new ucStorageStates());
             TabAddNew("Number series", new ucNumberSeries());
             TabAddNew("Database helper", new ucDBHelper());
 

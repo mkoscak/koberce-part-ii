@@ -64,6 +64,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\StorageStateEntity.cs" />
     <Compile Include="Entities\CustomerEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\NumberSerieEntity.cs" />
@@ -87,6 +88,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\ucStorageStates.resx">
+      <DependentUpon>ucStorageStates.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UCs\ucCustomers.resx">
@@ -126,6 +131,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UCs\ucStorageStates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\ucStorageStates.Designer.cs">
+      <DependentUpon>ucStorageStates.cs</DependentUpon>
     </Compile>
     <Compile Include="UCs\ucCustomers.cs">
       <SubType>UserControl</SubType>

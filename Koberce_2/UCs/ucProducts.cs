@@ -20,6 +20,7 @@ namespace Koberce_2.UCs
             InitializeComponent();
 
             new ToolTip().SetToolTip(btnReload, "Reload");
+            new ToolTip().SetToolTip(btnRotatePreview, "Rotate preview");
 
             try
             {
