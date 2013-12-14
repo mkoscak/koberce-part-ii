@@ -62,6 +62,7 @@
             this.txtQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuery.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtQuery.Location = new System.Drawing.Point(134, 3);
             this.txtQuery.Multiline = true;
@@ -74,6 +75,7 @@
             // 
             // btnClear
             // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.Red;
             this.btnClear.Location = new System.Drawing.Point(3, 244);
             this.btnClear.Name = "btnClear";
@@ -85,6 +87,7 @@
             // 
             // btnExecNonQuery
             // 
+            this.btnExecNonQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExecNonQuery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExecNonQuery.Location = new System.Drawing.Point(3, 42);
             this.btnExecNonQuery.Name = "btnExecNonQuery";
@@ -96,6 +99,7 @@
             // 
             // btnExecQuery
             // 
+            this.btnExecQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExecQuery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExecQuery.Location = new System.Drawing.Point(3, 3);
             this.btnExecQuery.Name = "btnExecQuery";
@@ -119,6 +123,7 @@
             this.splitBoxes.Panel1.Controls.Add(this.btnClear);
             this.splitBoxes.Panel1.Controls.Add(this.btnExecQuery);
             this.splitBoxes.Panel1.Controls.Add(this.btnExecNonQuery);
+            this.splitBoxes.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // splitBoxes.Panel2
             // 

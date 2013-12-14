@@ -14,6 +14,7 @@ namespace Koberce_2
     public partial class FrmMain : Form, IPresenter
     {
         Model model;
+        int previousSelectedTab;
 
         public FrmMain()
         {
@@ -74,8 +75,14 @@ namespace Koberce_2
             var newTab = new TabPage(title);
             tabMain.TabPages.Add(newTab);
             newTab.Controls.Add(uc);
+            newTab.Leave += new EventHandler(newTab_Leave);
             uc.Size = uc.Parent.ClientSize;
             uc.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+        }
+
+        void newTab_Leave(object sender, EventArgs e)
+        {
+            previousSelectedTab = tabMain.SelectedIndex;
         }
 
         /// <summary>
@@ -136,17 +143,18 @@ namespace Koberce_2
 
         private void toolBack_Click(object sender, EventArgs e)
         {
-            if (tabMain.SelectedIndex == 0)
-                return;
-            tabMain.SelectedIndex--;
+            var tmp = tabMain.SelectedIndex;
+            tabMain.SelectedIndex = previousSelectedTab;
+            previousSelectedTab = tmp;
         }
 
         private void toolNextTab_Click(object sender, EventArgs e)
         {
-            if (tabMain.SelectedIndex == tabMain.TabCount - 1)
-                return;
-
-            tabMain.SelectedIndex++;
+            previousSelectedTab = tabMain.SelectedIndex;
+            if (tabMain.SelectedIndex < tabMain.TabCount - 1)
+                tabMain.SelectedIndex++;
+            else
+                tabMain.SelectedIndex = 0;
         }
 
         #region IPresenter Members
@@ -163,6 +171,8 @@ namespace Koberce_2
                 var c = item.Controls[0];
                 if (c != null && c is IGridHolder && (c as IGridHolder).ContainsEntities(ofType))
                 {
+                    previousSelectedTab = tabMain.SelectedIndex;
+
                     tabMain.SelectedTab = item;
                     if ((c as IGridHolder).FindEntity(id) == false)
                         ShowStatus("Entity not found! (id = "+id+")");

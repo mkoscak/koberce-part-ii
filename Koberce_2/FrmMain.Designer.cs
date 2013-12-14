@@ -98,7 +98,7 @@
             this.toolBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolBack.Name = "toolBack";
             this.toolBack.Size = new System.Drawing.Size(52, 52);
-            this.toolBack.Text = "Previous tab";
+            this.toolBack.Text = "Previous selected tab";
             this.toolBack.Click += new System.EventHandler(this.toolBack_Click);
             // 
             // toolNextTab
@@ -252,7 +252,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.5.0";
+            this.Text = "Global - part II - v0.5.1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
