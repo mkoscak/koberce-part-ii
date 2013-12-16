@@ -96,7 +96,7 @@ namespace Koberce_2.Entities
 
         public static DataTable LoadDataTable(string tableName, string where, string order)
         {
-            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where {1} {2}", tableName, where, order ?? string.Empty));
+            var ds = DBProvider.Instance.ExecuteQuery(string.Format("select * from {0} where {1} order by {2}", tableName, where, order ?? "ID desc"));
             if (ds == null || ds.Tables == null || ds.Tables.Count == 0)
                 return new DataTable();
 

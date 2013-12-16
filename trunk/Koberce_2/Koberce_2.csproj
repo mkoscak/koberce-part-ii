@@ -71,6 +71,8 @@
     <Compile Include="Entities\ProductEntity.cs" />
     <Compile Include="Entities\StorageEntity.cs" />
     <Compile Include="Entities\SupplierEntity.cs" />
+    <Compile Include="Filters\FilterItem.cs" />
+    <Compile Include="Filters\Operators.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
