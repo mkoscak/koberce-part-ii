@@ -162,7 +162,7 @@
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 10;
-            this.btnNew.Text = "&Add new";
+            this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -267,7 +267,7 @@
             this.btnSaveNew.Name = "btnSaveNew";
             this.btnSaveNew.Size = new System.Drawing.Size(103, 23);
             this.btnSaveNew.TabIndex = 19;
-            this.btnSaveNew.Text = "Save as &new";
+            this.btnSaveNew.Text = "S&ave as new";
             this.btnSaveNew.UseVisualStyleBackColor = true;
             this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
             // 

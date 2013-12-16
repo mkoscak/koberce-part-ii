@@ -48,8 +48,18 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBaseFilter = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.fComment = new System.Windows.Forms.TextBox();
+            this.fId = new System.Windows.Forms.TextBox();
+            this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.filterPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.fValid = new System.Windows.Forms.CheckBox();
             this.toolbarMain.SuspendLayout();
             this.statusBar.SuspendLayout();
+            this.groupBaseFilter.SuspendLayout();
+            this.groupFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolbarMain
@@ -215,11 +225,11 @@
             this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabMain.Location = new System.Drawing.Point(3, 58);
+            this.tabMain.Location = new System.Drawing.Point(3, 141);
             this.tabMain.Multiline = true;
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(1135, 607);
+            this.tabMain.Size = new System.Drawing.Size(1135, 524);
             this.tabMain.TabIndex = 1;
             // 
             // statusBar
@@ -239,11 +249,94 @@
             this.statusLabel1.Size = new System.Drawing.Size(70, 17);
             this.statusLabel1.Text = "Form loaded!";
             // 
+            // groupBaseFilter
+            // 
+            this.groupBaseFilter.Controls.Add(this.fValid);
+            this.groupBaseFilter.Controls.Add(this.fId);
+            this.groupBaseFilter.Controls.Add(this.fComment);
+            this.groupBaseFilter.Controls.Add(this.label2);
+            this.groupBaseFilter.Controls.Add(this.label1);
+            this.groupBaseFilter.Location = new System.Drawing.Point(3, 58);
+            this.groupBaseFilter.Name = "groupBaseFilter";
+            this.groupBaseFilter.Size = new System.Drawing.Size(192, 77);
+            this.groupBaseFilter.TabIndex = 3;
+            this.groupBaseFilter.TabStop = false;
+            this.groupBaseFilter.Text = "Base filter";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Id";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Comment";
+            // 
+            // fComment
+            // 
+            this.fComment.Location = new System.Drawing.Point(66, 49);
+            this.fComment.Name = "fComment";
+            this.fComment.Size = new System.Drawing.Size(120, 20);
+            this.fComment.TabIndex = 2;
+            // 
+            // fId
+            // 
+            this.fId.Location = new System.Drawing.Point(66, 23);
+            this.fId.Name = "fId";
+            this.fId.Size = new System.Drawing.Size(43, 20);
+            this.fId.TabIndex = 3;
+            // 
+            // groupFilter
+            // 
+            this.groupFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupFilter.Controls.Add(this.filterPanel);
+            this.groupFilter.Location = new System.Drawing.Point(201, 58);
+            this.groupFilter.Name = "groupFilter";
+            this.groupFilter.Size = new System.Drawing.Size(930, 77);
+            this.groupFilter.TabIndex = 4;
+            this.groupFilter.TabStop = false;
+            this.groupFilter.Text = "Filter";
+            // 
+            // filterPanel
+            // 
+            this.filterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterPanel.AutoScroll = true;
+            this.filterPanel.Location = new System.Drawing.Point(6, 19);
+            this.filterPanel.Name = "filterPanel";
+            this.filterPanel.Size = new System.Drawing.Size(918, 52);
+            this.filterPanel.TabIndex = 0;
+            // 
+            // fValid
+            // 
+            this.fValid.AutoSize = true;
+            this.fValid.Checked = true;
+            this.fValid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fValid.Location = new System.Drawing.Point(114, 25);
+            this.fValid.Name = "fValid";
+            this.fValid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.fValid.Size = new System.Drawing.Size(72, 17);
+            this.fValid.TabIndex = 4;
+            this.fValid.Text = "Only valid";
+            this.fValid.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 690);
+            this.Controls.Add(this.groupFilter);
+            this.Controls.Add(this.groupBaseFilter);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.toolbarMain);
@@ -252,13 +345,16 @@
             this.MinimumSize = new System.Drawing.Size(740, 465);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Global - part II - v0.5.1";
+            this.Text = "Global - part II - v0.5.2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.toolbarMain.ResumeLayout(false);
             this.toolbarMain.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            this.groupBaseFilter.ResumeLayout(false);
+            this.groupBaseFilter.PerformLayout();
+            this.groupFilter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +381,14 @@
         private System.Windows.Forms.ToolStripButton toolBack;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolNextTab;
+        private System.Windows.Forms.GroupBox groupBaseFilter;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox fComment;
+        private System.Windows.Forms.TextBox fId;
+        private System.Windows.Forms.GroupBox groupFilter;
+        private System.Windows.Forms.FlowLayoutPanel filterPanel;
+        private System.Windows.Forms.CheckBox fValid;
     }
 }
 
