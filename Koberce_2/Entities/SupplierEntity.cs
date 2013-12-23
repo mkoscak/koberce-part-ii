@@ -73,6 +73,11 @@ namespace Koberce_2.Entities
             return BaseEntity<SupplierEntity>.LoadAll(DBProvider.T_SUPPLIER);
         }
 
+        public static List<SupplierEntity> Load(string where, string order)
+        {
+            return BaseEntity<SupplierEntity>.Load(DBProvider.T_SUPPLIER, where, order);
+        }
+
         public void Save()
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", ID, NAME, ADDRESS, ADDRESS2, PHONE, EMAIL, NR_SERIE_ID, COMMENT, VALID),

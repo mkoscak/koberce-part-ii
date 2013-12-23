@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
+using Koberce_2.Filters;
 
 namespace Koberce_2.UCs
 {
-    public partial class ucProducts : UserControl, IGridHolder
+    public partial class ucProducts : UserControl, IGridHolder, IFilterProvider
     {
         ProductEntity current;
         List<SupplierEntity> suppliers;
+        FilterPanel filter;
 
         public ucProducts()
         {
@@ -21,6 +23,18 @@ namespace Koberce_2.UCs
 
             new ToolTip().SetToolTip(btnReload, "Reload");
             new ToolTip().SetToolTip(btnRotatePreview, "Rotate preview");
+            
+            filter = new FilterPanel(this, FilterChanged);
+            filter.AddFilter(FilterItemType.TEXT, "PRODUCT_NR", "Product number");
+            filter.AddFilter(FilterItemType.TEXT, "DESCIPTION", "Description");
+            filter.AddFilter(FilterItemType.NUMBER, "HOCHFLOR", "Hochflor");
+            filter.AddFilter(FilterItemType.NUMBER, "KNOTS", "Knots");
+            filter.AddFilter(FilterItemType.NUMBER, "WEIGHT", "Weight");
+            filter.AddFilter(FilterItemType.NUMBER, "BUY_PRICE", "Buy price");
+            filter.AddFilter(FilterItemType.TEXT, "COLOR", "Color");
+            filter.AddFilter(FilterItemType.TEXT, "MATERIAL", "Material");
+            filter.AddFilter(FilterItemType.TEXT, "MAT_INSIDE", "Meterial inside");
+            filter.AddFilter(FilterItemType.TEXT, "FORM", "Form");
 
             try
             {
@@ -38,7 +52,7 @@ namespace Koberce_2.UCs
             ReloadSuppliers();
 
             gridProducts.DataSource = null;
-            var data = ProductEntity.LoadAll();
+            var data = ProductEntity.Load(filter.GetSQL(" AND "), null);
             gridProducts.DataSource = data;
             Common.PresenterInst.ShowStatus(data.Count.ToString() + " products loaded!");
         }
@@ -262,6 +276,20 @@ namespace Koberce_2.UCs
         public UserControl GetControl()
         {
             return this;
+        }
+
+        #endregion
+
+        #region IFilterProvider Members
+
+        public FilterPanel GetFilterPanel()
+        {
+            return filter;
+        }
+
+        public void FilterChanged(object sender, EventArgs e)
+        {
+            ReloadAllData();
         }
 
         #endregion

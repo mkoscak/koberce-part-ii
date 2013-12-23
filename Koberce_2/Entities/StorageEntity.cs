@@ -40,6 +40,11 @@ namespace Koberce_2.Entities
             return BaseEntity<StorageEntity>.LoadAll(DBProvider.T_STORAGE);
         }
 
+        public static List<StorageEntity> Load(string where, string order)
+        {
+            return BaseEntity<StorageEntity>.Load(DBProvider.T_STORAGE, where, order);
+        }
+
         public void Save()
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7}", ID, NAME, ADDRESS, ADDRESS2, PHONE, EMAIL, COMMENT, VALID),

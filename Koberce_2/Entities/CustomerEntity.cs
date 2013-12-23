@@ -54,6 +54,11 @@ namespace Koberce_2.Entities
             return BaseEntity<CustomerEntity>.LoadAll(DBProvider.T_CUSTOMER);
         }
 
+        public static List<CustomerEntity> Load(string where, string order)
+        {
+            return BaseEntity<CustomerEntity>.Load(DBProvider.T_CUSTOMER, where, order);
+        }
+
         public void Save()
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", ID, NAME, ADDRESS, ADDRESS2, PHONE, EMAIL, CUSTOMER_TYPE, COMMENT, VALID),

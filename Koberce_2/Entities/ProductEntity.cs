@@ -79,6 +79,11 @@ namespace Koberce_2.Entities
             return BaseEntity<ProductEntity>.LoadAll(DBProvider.T_PRODUCT);
         }
 
+        public static List<ProductEntity> Load(string where, string order)
+        {
+            return BaseEntity<ProductEntity>.Load(DBProvider.T_PRODUCT, where, order);
+        }
+
         public void Save()
         {
             if (!Id.HasValue)
