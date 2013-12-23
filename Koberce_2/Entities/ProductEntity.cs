@@ -46,7 +46,7 @@ namespace Koberce_2.Entities
         public SupplierEntity SupplierEnt;
 
         static string PRODUCT_NR = "PRODUCT_NR";
-        static string DESCIPTION = "DESCIPTION";
+        static string DESCIPTION = "DESCRIPTION";
         static string HOCHFLOR = "HOCHFLOR";
         static string KNOTS = "KNOTS";
         static string WEIGHT = "WEIGHT";
