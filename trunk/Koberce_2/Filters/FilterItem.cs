@@ -2,55 +2,84 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Koberce_2.Filters
 {
-    public enum FilterItemType
-    {
-        TEXT,
-        INTEGER,
-        REAL,
-        BOOLEAN
-    }
-
     public class FilterItem
     {
         public string ColumnName { get; set; }
-        public string Operator { get; set; }
-        public string Value { get; set; }
         public FilterItemType Type { get; set; }
+        public Control Control { get; set; }
 
-        public FilterItem(string colName, string op, string value, FilterItemType type)
+        public FilterItem(string colName, FilterItemType type)
         {
             ColumnName = colName;
-            Operator = op;
-            Value = value;
             Type = type;
         }
 
         public string FormatSQL()
         {
-            return string.Format(" {0} {1} {2} ", ColumnName, Operator, GetFormattedValue());
+            var value = Control.Text;
+            if (Type == FilterItemType.BOOLEAN)
+                value = (Control as CheckBox).Checked ? "1" : "0";
+
+            return GetFilter(value, ColumnName);
         }
 
-        private string GetFormattedValue()
+        private string GetFilter(string text, string columnName)
         {
-            string ret = Value;
+            string ret = string.Empty;
 
-            switch (Type)
+            if (text != null && text.Trim().Length > 0)
             {
-                case FilterItemType.TEXT:
-                    if (Operator == Operators.LIKE || Operator == Operators.NOT_LIKE)
-                        ret = string.Format("'%{0}%'", ret);
-                    break;
-                case FilterItemType.INTEGER:
-                    break;
-                case FilterItemType.REAL:
-                    break;
-                case FilterItemType.BOOLEAN:
-                    break;
-                default:
-                    break;
+                string op = " like ";
+                string neg = "";
+                string perc = @"%";
+                string quotes = "\"";
+
+                if (text.Contains('!'))
+                {
+                    neg = " not ";
+                    text = text.Replace("!", "");
+                }
+                else if (text.Contains('>'))
+                {
+                    op = " > ";
+                    text = text.Replace(">", "");
+                    if (text.Contains('='))
+                        op = " >= ";
+                    text = text.Replace("=", "");
+                    perc = "";
+                    quotes = "";
+
+                    int ival;
+                    if (!int.TryParse(text.Trim(), out ival))
+                        return ret;
+
+                    columnName = string.Format("CAST({0} as real)", columnName);
+                }
+                else if (text.Contains('<'))
+                {
+                    op = " < ";
+                    text = text.Replace("<", "");
+                    if (text.Contains('='))
+                        op = " <= ";
+                    text = text.Replace("=", "");
+                    perc = "";
+                    quotes = "";
+
+                    int ival;
+                    if (!int.TryParse(text.Trim(), out ival))
+                        return ret;
+
+                    columnName = string.Format("CAST({0} as real)", columnName);
+                }
+
+                if (text.Trim().Length == 0)
+                    return ret;
+
+                ret = string.Format(" {0} {1} {2} {5}{4}{3}{4}{5} ", columnName, neg, op, text, perc, quotes);
             }
 
             return ret;

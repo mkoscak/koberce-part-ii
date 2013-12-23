@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
 using Koberce_2.UCs;
+using Koberce_2.Filters;
 
 namespace Koberce_2
 {
@@ -31,6 +32,7 @@ namespace Koberce_2
             TabAddNew("Storage states", new ucStorageStates());
             TabAddNew("Number series", new ucNumberSeries());
             TabAddNew("Database helper", new ucDBHelper());
+            tabMain_SelectedIndexChanged(tabMain, new EventArgs());
 
             // TODO read exchange rates from net..
             toolExRateCzk.Text = Common.CleanPrice(toolExRateCzk.Text);
@@ -155,6 +157,19 @@ namespace Koberce_2
                 tabMain.SelectedIndex++;
             else
                 tabMain.SelectedIndex = 0;
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var uc = tabMain.SelectedTab.Controls[0];
+            panelFilter.Controls.Clear();
+
+            if (uc != null && uc is IFilterProvider)
+            {
+                var filter = (uc as IFilterProvider).GetFilterPanel();
+                panelFilter.Controls.Add(filter);
+                filter.Size = panelFilter.Size;
+            }
         }
 
         #region IPresenter Members

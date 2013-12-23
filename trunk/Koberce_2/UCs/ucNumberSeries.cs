@@ -7,18 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
+using Koberce_2.Filters;
 
 namespace Koberce_2.UCs
 {
-    public partial class ucNumberSeries : UserControl, IGridHolder
+    public partial class ucNumberSeries : UserControl, IGridHolder, IFilterProvider
     {
         NumberSerieEntity current;
+        FilterPanel filter;
 
         public ucNumberSeries()
         {
             InitializeComponent();
 
             new ToolTip().SetToolTip(btnReload, "Reload");
+
+            filter = new FilterPanel(this, FilterChanged);
+            filter.AddFilter(FilterItemType.TEXT, "NAME", "Name");
+            filter.AddFilter(FilterItemType.TEXT, "PREFIX", "Prefix");
+            filter.AddFilter(FilterItemType.NUMBER, "LAST_NR", "Last number");
 
             //nacitanie moze zlyhat ak DB neexistuje alebo nie je aktualne oscriptovana.. vtedy je potrebne pouzit DBHelper a spustit aktualny script
             try
@@ -34,7 +41,7 @@ namespace Koberce_2.UCs
         private void ReloadAllData()
         {
             gridSeries.DataSource = null;
-            var data = NumberSerieEntity.LoadAll();
+            var data = NumberSerieEntity.Load(filter.GetSQL(" AND "), null);
             gridSeries.DataSource = data;
             Common.PresenterInst.ShowStatus(data.Count.ToString() + " number series loaded!");
         }
@@ -176,6 +183,20 @@ namespace Koberce_2.UCs
         public UserControl GetControl()
         {
             return this;
+        }
+
+        #endregion
+
+        #region IFilterProvider Members
+
+        public Koberce_2.Filters.FilterPanel GetFilterPanel()
+        {
+            return filter;
+        }
+
+        public void FilterChanged(object sender, EventArgs e)
+        {
+            ReloadAllData();
         }
 
         #endregion

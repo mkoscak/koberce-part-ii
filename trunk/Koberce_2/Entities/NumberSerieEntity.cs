@@ -38,6 +38,11 @@ namespace Koberce_2.Entities
             return BaseEntity<NumberSerieEntity>.LoadAll(DBProvider.T_NUMBER_SERIE);
         }
 
+        public static List<NumberSerieEntity> Load(string where, string order)
+        {
+            return BaseEntity<NumberSerieEntity>.Load(DBProvider.T_NUMBER_SERIE, where, order);
+        }
+
         public void Save()
         {
             Save(string.Format("{0},{1},{2},{3},{4},{5}", ID, NAME, PREFIX, LAST_NR, COMMENT, VALID),

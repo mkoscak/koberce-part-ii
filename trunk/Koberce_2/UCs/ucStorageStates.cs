@@ -16,7 +16,7 @@ namespace Koberce_2.UCs
         {
             InitializeComponent();
 
-            var uc = new ucStorages();
+            /*var uc = new ucStorages();
             panelStorages.Controls.Add(uc);
             uc.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
             uc.Size = uc.Parent.ClientSize;
@@ -24,7 +24,7 @@ namespace Koberce_2.UCs
             var uc2 = new ucProducts();
             panelProducts.Controls.Add(uc2);
             uc2.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-            uc2.Size = uc2.Parent.ClientSize;
+            uc2.Size = uc2.Parent.ClientSize;*/
 
             try
             {

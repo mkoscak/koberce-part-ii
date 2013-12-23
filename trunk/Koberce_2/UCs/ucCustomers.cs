@@ -7,19 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Koberce_2.Entities;
+using Koberce_2.Filters;
 
 namespace Koberce_2.UCs
 {
-    public partial class ucCustomers : UserControl, IGridHolder
+    public partial class ucCustomers : UserControl, IGridHolder, IFilterProvider
     {
-
         CustomerEntity current;
+        FilterPanel filter;
 
         public ucCustomers()
         {
             InitializeComponent();
 
             new ToolTip().SetToolTip(btnReload, "Reload");
+
+            filter = new FilterPanel(this, FilterChanged);
+            filter.AddFilter(FilterItemType.TEXT, "NAME", "Name");
+            filter.AddFilter(FilterItemType.TEXT, "ADDRESS", "Address");
+            filter.AddFilter(FilterItemType.TEXT, "ADDRESS2", "Address2");
+            filter.AddFilter(FilterItemType.TEXT, "PHONE", "Phone");
+            filter.AddFilter(FilterItemType.TEXT, "EMAIL", "E-mail");
 
             try
             {
@@ -36,7 +44,7 @@ namespace Koberce_2.UCs
             ReloadCustomerTypes();
 
             gridCustomers.DataSource = null;
-            var data = CustomerEntity.LoadAll();
+            var data = CustomerEntity.Load(filter.GetSQL(" AND "), null);
             gridCustomers.DataSource = data;
             Common.PresenterInst.ShowStatus(data.Count.ToString() + " customers loaded!");
         }
@@ -171,6 +179,20 @@ namespace Koberce_2.UCs
         public UserControl GetControl()
         {
             return this;
+        }
+
+        #endregion
+
+        #region IFilterProvider Members
+
+        public Koberce_2.Filters.FilterPanel GetFilterPanel()
+        {
+            return filter;
+        }
+
+        public void FilterChanged(object sender, EventArgs e)
+        {
+            ReloadAllData();
         }
 
         #endregion
