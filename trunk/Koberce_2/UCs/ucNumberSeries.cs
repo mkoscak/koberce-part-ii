@@ -23,6 +23,10 @@ namespace Koberce_2.UCs
             new ToolTip().SetToolTip(btnReload, "Reload");
 
             filter = new FilterPanel(this, FilterChanged);
+            filter.AddFilter(FilterItemType.NUMBER, "ID", "Id");
+            filter.AddFilter(FilterItemType.BOOLEAN, "VALID", "Only valid");
+            filter.AddFilter(FilterItemType.TEXT, "COMMENT", "Comment");
+
             filter.AddFilter(FilterItemType.TEXT, "NAME", "Name");
             filter.AddFilter(FilterItemType.TEXT, "PREFIX", "Prefix");
             filter.AddFilter(FilterItemType.NUMBER, "LAST_NR", "Last number");

@@ -90,7 +90,9 @@ namespace Koberce_2.Filters
                 item.Text = title;
                 item.Margin = new Padding(10, 4, 10, 4);
                 (item as CheckBox).AutoSize = true;
+                (item as CheckBox).Checked = true;
                 (item as CheckBox).UseVisualStyleBackColor = true;
+                item.ForeColor = SystemColors.HotTrack;
             }
             if (typeof(T) == typeof(DateTimePicker))
             {

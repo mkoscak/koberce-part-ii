@@ -23,8 +23,12 @@ namespace Koberce_2.UCs
 
             new ToolTip().SetToolTip(btnReload, "Reload");
             new ToolTip().SetToolTip(btnRotatePreview, "Rotate preview");
-            
+
             filter = new FilterPanel(this, FilterChanged);
+            filter.AddFilter(FilterItemType.NUMBER, "ID", "Id");
+            filter.AddFilter(FilterItemType.BOOLEAN, "VALID", "Only valid");
+            filter.AddFilter(FilterItemType.TEXT, "COMMENT", "Comment");
+
             filter.AddFilter(FilterItemType.TEXT, "PRODUCT_NR", "Product number");
             filter.AddFilter(FilterItemType.TEXT, "DESCIPTION", "Description");
             filter.AddFilter(FilterItemType.NUMBER, "HOCHFLOR", "Hochflor");
