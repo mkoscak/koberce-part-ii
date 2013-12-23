@@ -30,7 +30,7 @@ namespace Koberce_2.UCs
             filter.AddFilter(FilterItemType.TEXT, "COMMENT", "Comment");
 
             filter.AddFilter(FilterItemType.TEXT, "PRODUCT_NR", "Product number");
-            filter.AddFilter(FilterItemType.TEXT, "DESCIPTION", "Description");
+            filter.AddFilter(FilterItemType.TEXT, "DESCRIPTION", "Description");
             filter.AddFilter(FilterItemType.NUMBER, "HOCHFLOR", "Hochflor");
             filter.AddFilter(FilterItemType.NUMBER, "KNOTS", "Knots");
             filter.AddFilter(FilterItemType.NUMBER, "WEIGHT", "Weight");
